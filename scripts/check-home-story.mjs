@@ -23,5 +23,12 @@ for(const file of fs.readdirSync('public/home-motion/js').filter(file=>file.star
     if(!fs.existsSync(path.join('public',match[1])))failures.push(`Missing texture: ${match[1]}`);
   }
 }
+for(const id of ['about-mobile','wellness-mobile','nature-mobile','l-residences-sticky-2','interiors-2']){
+  if(!text.includes(`id="${id}"`)||!text.includes(`data-scroll-target="#${id}"`))failures.push(`Disconnected mobile sticky scene: ${id}`);
+}
+const nature=fs.readFileSync(path.join(directory,'03-quality.html'),'utf8').split('id="nature-mobile"')[1];
+if(!nature?.includes('data-parallax-pattern="natureCaptionMoveUp"'))failures.push('Mobile Nature text mask is disconnected');
+const projects=fs.readFileSync(path.join(directory,'04-projects.html'),'utf8');
+if(!projects.includes('data-content-animation-controller-selector=":root .js-residences-content-animation-controller"'))failures.push('Mobile project swipe/caption synchronization is disconnected');
 if(failures.length){console.error(failures.join('\n'));process.exit(1);}
 console.log(`Verified ${paths.size} local homepage media paths, ${Object.keys(source.GRAND_POOLS_DATA).length} real projects, and both GP WebGL texture sets.`);

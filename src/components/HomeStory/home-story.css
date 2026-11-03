@@ -37,13 +37,13 @@ html.gp-home-no-webgl .gp-story canvas, html.gp-home-no-webgl .gp-story .l-welln
 .gp-native-expert-app .gp-app-panel .luxury-stage-surface > section { min-height: 100svh; }
 .gp-story .l-residences { margin-top: 0 !important; clip-path: none; z-index: 12; }
 .gp-story .l-residences__webgl-container, .gp-story .l-residences__slider-container { z-index: 12; }
-.gp-story .l-residences__caption__type { text-transform: none; font-family: var(--font-display); font-size: 30px; line-height: 1.15; }
-.gp-story .l-residences__caption__description { font-size: 14px; line-height: 1.25; }
-.gp-story .l-residences__caption__item { padding-top: 12px; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__type { text-transform: none; font-family: var(--font-display); font-size: 30px; line-height: 1.15; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__description { font-size: 14px; line-height: 1.25; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__item { padding-top: 12px; }
 .gp-story .gp-project-description, .gp-story .gp-mobile-project-description { font-family: var(--font-body),Arial,sans-serif; font-size: 15px; line-height: 1.45; }
 .gp-story .gp-mobile-project-description { margin: 16px 0 24px; }
-.gp-story .l-residences__caption:focus-within .l-residences__caption__card { height: calc(var(--scale-px) * 460); }
-.gp-story .l-residences__caption:focus-within .l-residences__caption__line { transform: translateY(-220px); }
+.gp-story #l-residences-sticky-1 .l-residences__caption:focus-within .l-residences__caption__card { height: calc(var(--scale-px) * 460); }
+.gp-story #l-residences-sticky-1 .l-residences__caption:focus-within .l-residences__caption__line { transform: translateY(-220px); }
 .gp-story .l-interiors { z-index: 13; }
 .gp-native-ending { position: relative; z-index: 14; }
 html.gp-home-smooth .gp-native-ending .luxury-stage[data-hold="sticky"] > .luxury-stage-view { position: relative !important; top: 0 !important; }
@@ -124,15 +124,15 @@ html.gp-home-active .c-scrollbar_thumb { background: rgba(244,238,223,.65); box-
 .gp-story .gp-wave-slot > div { position:absolute; inset:0; }
 @media(min-width:1025px) { .gp-story #wellness { height:350vh; } }
 /* The project card grows only as far as its description, plus the GP button. */
-.gp-story .l-residences__caption__line { display:none; }
-.gp-story .l-residences__caption__card { height:auto !important; max-height:calc(100svh - 120px); overflow:auto; }
-.gp-story .l-residences__caption__card-content { position:relative; width:100%; padding:24px 30px 16px; height:auto; }
-.gp-story .l-residences__caption__description { min-height:0; margin:12px 0 0; }
-.gp-story .l-residences__caption__item { height:auto; display:grid; grid-template-rows:0fr; padding:0; transition:grid-template-rows .55s ease,margin .55s ease; }
-.gp-story .l-residences__caption__item > p { min-height:0; overflow:hidden; margin:0; opacity:0; transition:opacity .35s ease; }
-.gp-story .l-residences__caption:is(:hover,:focus-within) .l-residences__caption__item { grid-template-rows:1fr; margin-top:20px; }
-.gp-story .l-residences__caption:is(:hover,:focus-within) .gp-project-description { opacity:1; }
-.gp-story .l-residences__caption__button { position:relative; bottom:auto; padding:0 30px 24px; border:0; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__line { display:none; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__card { height:auto !important; max-height:calc(100svh - 120px); overflow:auto; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__card-content { position:relative; width:100%; padding:24px 30px 16px; height:auto; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__description { min-height:0; margin:12px 0 0; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__item { height:auto; display:grid; grid-template-rows:0fr; padding:0; transition:grid-template-rows .55s ease,margin .55s ease; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__item > p { min-height:0; overflow:hidden; margin:0; opacity:0; transition:opacity .35s ease; }
+.gp-story #l-residences-sticky-1 .l-residences__caption:is(:hover,:focus-within) .l-residences__caption__item { grid-template-rows:1fr; margin-top:20px; }
+.gp-story #l-residences-sticky-1 .l-residences__caption:is(:hover,:focus-within) .gp-project-description { opacity:1; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__button { position:relative; bottom:auto; padding:0 30px 24px; border:0; }
 /* Title, then budget introduction, then the two-column pool configurator. */
 .gp-story .gp-pricing-shade { position:absolute; inset:0; background:rgba(8,22,18,.42); }
 .gp-story .gp-pricing-intro-copy { position:absolute; bottom:8vh; left:0; width:40%; color:#F4EEDF; }
@@ -168,9 +168,9 @@ html.gp-home-smooth .gp-invitation-view { position:relative; }
  .gp-invitation { height:100lvh; margin-top:0; }
  .gp-invitation-view { height:100lvh; }
 }
-.gp-story .l-residences__caption,
-.gp-story .l-residences__caption .content-animation > [data-content-animation-item] { background:transparent; }
-.gp-story .l-residences__caption__card { background:#162D24; }
+.gp-story #l-residences-sticky-1 .l-residences__caption,
+.gp-story #l-residences-sticky-1 .l-residences__caption .content-animation > [data-content-animation-item] { background:transparent; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__card { background:#162D24; }
 .gp-story .gp-process-workspace > div:nth-last-child(-n+2) h3 { font-size:16px; }
 
 /* Typography and copy placement for the GP scene content. */
@@ -200,22 +200,22 @@ html.gp-home-smooth .gp-invitation-view { position:relative; }
 .gp-story .gp-projects-intro-copy h2 { margin:0 0 24px; }
 .gp-story .gp-projects-intro-description { max-width:420px; font:16px/1.6 var(--font-body),Arial,sans-serif; margin:0; }
 /* Fixed card sizes reserve room for any title's two lines. */
-.gp-story .l-residences__caption,
-.gp-story .l-residences__caption .content-animation,
-.gp-story .l-residences__caption .content-animation > [data-content-animation-item],
-.gp-story .l-residences__caption > .l-residences__caption__content-animation { height:280px !important; }
-.gp-story .l-residences__caption { width:340px; }
-.gp-story .l-residences__caption__card { width:340px; height:280px !important; overflow:hidden; transition:height .65s cubic-bezier(.25,.74,.22,.99); }
-.gp-story .l-residences__caption:is(:hover,:focus-within) .l-residences__caption__card { height:420px !important; }
-.gp-story .l-residences__caption__card-content { width:100%; padding:26px 30px 0; }
-.gp-story .l-residences__caption__type { min-height:70px; max-height:70px; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden; font-size:30px; line-height:1.15; white-space:normal; overflow-wrap:normal; }
-.gp-story .l-residences__caption__description { margin:8px 0 20px; line-height:1.4; }
+.gp-story #l-residences-sticky-1 .l-residences__caption,
+.gp-story #l-residences-sticky-1 .l-residences__caption .content-animation,
+.gp-story #l-residences-sticky-1 .l-residences__caption .content-animation > [data-content-animation-item],
+.gp-story #l-residences-sticky-1 .l-residences__caption > .l-residences__caption__content-animation { height:280px !important; }
+.gp-story #l-residences-sticky-1 .l-residences__caption { width:340px; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__card { width:340px; height:280px !important; overflow:hidden; transition:height .65s cubic-bezier(.25,.74,.22,.99); }
+.gp-story #l-residences-sticky-1 .l-residences__caption:is(:hover,:focus-within) .l-residences__caption__card { height:420px !important; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__card-content { width:100%; padding:26px 30px 0; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__type { min-height:70px; max-height:70px; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden; font-size:30px; line-height:1.15; white-space:normal; overflow-wrap:normal; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__description { margin:8px 0 20px; line-height:1.4; }
 .gp-story .gp-card-progress { height:1px; width:100%; background:rgba(244,238,223,.22); position:relative; overflow:hidden; }
 .gp-story .gp-card-progress span { display:block; width:0; height:100%; background:#F4EEDF; }
-.gp-story .l-residences__caption__item { display:block; margin-top:20px; height:138px; padding:0; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__item { display:block; margin-top:20px; height:138px; padding:0; }
 .gp-story .gp-project-description { opacity:0; max-height:138px; overflow:auto !important; font-size:15px; line-height:1.5; }
-.gp-story .l-residences__caption:is(:hover,:focus-within) .gp-project-description { opacity:1; }
-.gp-story .l-residences__caption__button { position:absolute; bottom:0; padding:20px 30px 26px; background:#162D24; }
+.gp-story #l-residences-sticky-1 .l-residences__caption:is(:hover,:focus-within) .gp-project-description { opacity:1; }
+.gp-story #l-residences-sticky-1 .l-residences__caption__button { position:absolute; bottom:0; padding:20px 30px 26px; background:#162D24; }
 /* Rich architectural study: GP photography, a fine drawing grid and warm paper. */
 .gp-story .gp-price-sketch { position:relative; color:#F4EEDF; background:linear-gradient(rgba(9,31,26,.88),rgba(9,31,26,.94)),url('/camberwell3.webp') center/cover; padding:92px 38px 36px; overflow:hidden; }
 .gp-story .gp-price-sketch:before { content:''; position:absolute; inset:0; opacity:.14; pointer-events:none; background-image:linear-gradient(#d4dfd7 1px,transparent 1px),linear-gradient(90deg,#d4dfd7 1px,transparent 1px); background-size:40px 40px; }
@@ -266,20 +266,39 @@ html.gp-home-smooth .gp-invitation-view { position:relative; }
 /* Give every reading phase its own space before the next mask arrives. */
 @media(min-width:1025px) { .gp-story #about {height:700vh;} }
 .gp-story .gp-static-hero-copy,.gp-story .gp-static-hero-copy :is(h1,p,a) {opacity:1!important;visibility:visible!important;transform:none!important;animation:none!important;}
-.gp-story .l-nature__caption__inner > [data-parallax-pattern="natureCaptionMoveUp"] {min-height:410px;height:auto!important;padding-top:86px;padding-bottom:56px;}
+.gp-story .l-nature__caption__inner > [data-parallax-pattern="natureCaptionMoveUp"] {min-height:400px;height:auto!important;padding-top:76px;padding-bottom:56px;}
 .gp-story .gp-quality-prose {max-width:640px;}
 .gp-story .gp-quality-prose p {font-size:20px;line-height:1.6;}
 @media(max-width:1200px) {.gp-story .gp-quality-prose p {font-size:18px;}}
 /* Card size follows real copy; there is no nested scroll area. */
-.gp-story .l-residences__caption__card,.gp-story .l-residences__caption:is(:hover,:focus-within) .l-residences__caption__card {height:auto!important;max-height:none;overflow:visible;}
-.gp-story .l-residences__caption__type {display:block;min-height:75px;max-height:none;overflow:visible;-webkit-line-clamp:unset;padding-top:5px;line-height:1.25;}
-.gp-story .l-residences__caption__type:before,.gp-story .l-residences__caption__type:after {display:none;}
-.gp-story .l-residences__caption__item {display:grid;height:auto;grid-template-rows:0fr;margin:0;overflow:hidden;transition:grid-template-rows .6s ease,margin .6s ease;}
-.gp-story .l-residences__caption:is(:hover,:focus-within) .l-residences__caption__item {grid-template-rows:1fr;margin-top:20px;}
+.gp-story #l-residences-sticky-1 .l-residences__caption__card,.gp-story #l-residences-sticky-1 .l-residences__caption:is(:hover,:focus-within) .l-residences__caption__card {height:auto!important;max-height:none;overflow:visible;}
+.gp-story #l-residences-sticky-1 .l-residences__caption__type {display:block;min-height:75px;max-height:none;overflow:visible;-webkit-line-clamp:unset;padding-top:5px;line-height:1.25;}
+.gp-story #l-residences-sticky-1 .l-residences__caption__type:before,.gp-story #l-residences-sticky-1 .l-residences__caption__type:after {display:none;}
+.gp-story #l-residences-sticky-1 .l-residences__caption__item {display:grid;height:auto;grid-template-rows:0fr;margin:0;overflow:hidden;transition:grid-template-rows .6s ease,margin .6s ease;}
+.gp-story #l-residences-sticky-1 .l-residences__caption:is(:hover,:focus-within) .l-residences__caption__item {grid-template-rows:1fr;margin-top:20px;}
 .gp-story .gp-project-description {min-height:0;max-height:none;overflow:hidden!important;margin:0;padding:0;}
-.gp-story .l-residences__caption__button {position:relative;bottom:auto;padding:24px 30px 26px;}
+.gp-story #l-residences-sticky-1 .l-residences__caption__button {position:relative;bottom:auto;padding:24px 30px 26px;}
 .gp-story .l-interiors__intro-caption .text-c1 {text-transform:none;margin-top:14px;}
 .gp-page-progress {height:1px;bottom:16px;pointer-events:none!important;background:#f4eedf40;}
 .gp-page-progress > span {display:block;width:100%;height:100%;background:currentColor;transform-origin:left;}
 
 .gp-story .l-interiors__intro-caption .text-c1 {font:400 16px/1.4 var(--font-body),Arial,sans-serif;letter-spacing:.015em;}
+
+/* Mobile keeps the reference engine, sticky layers, masks and swipe galleries. */
+@media(max-width:1024px) {
+ .gp-story #nature-mobile .gp-quality-prose {padding:24px;background:#162D24;max-width:none;width:100%;height:auto!important;min-height:0;}
+ .gp-story #nature-mobile .gp-quality-prose p {font-size:16px;line-height:1.55;}
+ .gp-story .l-residences__slider-container .l-residences__caption {width:100%;height:auto;}
+ .gp-story .l-residences__slider-container .l-residences__caption__item {display:block;height:auto;padding-top:24px;overflow:visible;}
+ .gp-story .l-residences__slider-container .l-residences__caption__type {font:100 34px/1.25 var(--font-display),Georgia,serif;white-space:normal;overflow:visible;}
+ .gp-story .l-residences__slider-container .l-residences__caption__type:before,.gp-story .l-residences__slider-container .l-residences__caption__type:after {display:none;}
+ .gp-story .l-residences__slider-container .gp-mobile-project-description {font-size:16px;line-height:1.5;}
+ .gp-story #interiors-2 .l-interiors__intro-caption {width:100%;padding-top:100px;}
+ .gp-story #interiors-2 .l-interiors__intro__text {font:16px/1.5 var(--font-body),Arial,sans-serif;}
+ .gp-story .gp-cost-mobile {padding-top:0;}
+}
+
+@media(max-width:1024px) {
+ .gp-story #interiors-2 .l-interiors__intro-caption h2 {margin:0;line-height:1.15;}
+ .gp-story #interiors-2 .l-interiors__intro-caption > .text-c1 {font:400 14px/1.4 var(--font-body),Arial,sans-serif;margin:14px 0 0;text-transform:none;}
+}

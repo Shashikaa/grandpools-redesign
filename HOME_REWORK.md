@@ -42,8 +42,10 @@ Production: `npm run build`, then `npm start`.
   its own reading phase. The process column finishes before the next scene,
   and the cost title stays visible through its introduction.
 - The quality prose panel restores a taller height and slightly larger text.
-- Mobile and tablet use a dedicated stacked layout, native scrolling, subtle
-  image parallax and individual copy reveals, with all five real projects.
+- Mobile and tablet use the retained Springs responsive markup and engine.
+  Sticky image zooms, the Nature text/photo mask, scroll-linked exits and
+  synchronized swipe galleries are restored, with all five real GP projects.
+  The separate stacked mobile redesign has been removed.
 
 ## Scroll architecture
 
@@ -68,7 +70,7 @@ Validation: homepage local-media check, TypeScript, motion-script syntax,
 checkpoint regression tests (`node --test scripts/home-snap.test.mjs`) and
 production build. Browser checks cover checkpoint settling, read-only progress,
 copy placement, card expansion, pricing selection, ending-panel geometry and
-390px/768px responsive layouts.
+390px/768px responsive layouts, mobile Nature masking and project swipe/caption synchronization.
 
 This cloud browser cannot render WebGL. The original GP GPU implementation is
 wired in and keeps a photo fallback; GPU appearance needs checking on a browser

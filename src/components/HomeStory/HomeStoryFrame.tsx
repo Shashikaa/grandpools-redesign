@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { useSite } from '@/src/app/context/SiteContext';
 import Founder from '@/src/components/Home/Sectionseven';
@@ -12,19 +12,10 @@ import Footer from '@/src/components/Footer';
 import Stage from '@/src/components/motion/LuxuryStage';
 import PricingControls from './PricingControls';
 import PageProgress from './PageProgress';
-import MobileHome from './MobileHome';
 import {installHomeEntrances} from './entrances';
-import './mobile-home.css';
 import { startHomeMotion } from './runtime';
 
-const mobileQuery='(max-width:1024px)';
-const subscribeMobile=(callback:()=>void)=>{const m=matchMedia(mobileQuery);m.addEventListener('change',callback);return()=>m.removeEventListener('change',callback)};
-const mobileSnapshot=()=>matchMedia(mobileQuery).matches;
-const serverMobile=()=>false;
-
 export default function HomeStoryFrame({ opening, collection }: { opening: ReactNode; collection: ReactNode }) {
-  const mobile=useSyncExternalStore(subscribeMobile,mobileSnapshot,serverMobile);
-  const previousMode=useRef<boolean|null>(null);
   const root = useRef<HTMLDivElement>(null);
   const { preloaderDone, menuOpen, smootherRef } = useSite();
   const [costBand,setCostBand] = useState(0);
@@ -36,18 +27,7 @@ export default function HomeStoryFrame({ opening, collection }: { opening: React
   current.current = { preloaderDone, menuOpen };
 
   useEffect(() => {
-    if(!preloaderDone || mobile!==matchMedia(mobileQuery).matches)return;
-    if(mobile){
-      document.documentElement.classList.add('gp-home-mobile');
-      const adapter={get scroll(){return window.scrollY},scrollTo(target:number|string|Element,options:{immediate?:boolean}={}){
-        if(typeof target==='number')window.scrollTo({top:target,behavior:options.immediate?'instant':'smooth'});
-        else (typeof target==='string'?document.querySelector(target):target)?.scrollIntoView({behavior:'smooth'});
-      },start(){},stop(){},resize(){}};
-      window.__gpHomeScroller=adapter;
-      if(smootherRef)smootherRef.current=adapter;
-      setReady(true);return;
-    }
-    if(!root.current)return;
+    if(!preloaderDone || !root.current)return;
     let cancelled = false;
     startHomeMotion(root.current).then(adapter => {
       if (cancelled) return;
@@ -61,16 +41,12 @@ export default function HomeStoryFrame({ opening, collection }: { opening: React
       setError(true);
     });
     return () => { cancelled = true; };
-  }, [preloaderDone, smootherRef,mobile]);
+  }, [preloaderDone, smootherRef]);
 
   useEffect(()=>{
-    if(previousMode.current!==null&&previousMode.current!==mobile&&(ready||Boolean(window.__gpHomeRuntimePromise)))location.reload();
-    previousMode.current=mobile;
-  },[mobile,ready]);
-  useEffect(()=>{
-    if(!ready||mobile||!root.current)return;
+    if(!ready||!root.current||matchMedia("(max-width:1024px)").matches)return;
     return installHomeEntrances(root.current);
-  },[ready,mobile]);
+  },[ready]);
 
   useEffect(() => {
     if (!ready || process.env.NODE_ENV !== 'development' || !root.current) return;
@@ -126,8 +102,6 @@ export default function HomeStoryFrame({ opening, collection }: { opening: React
     document.addEventListener('click', navigate, true);
     return () => document.removeEventListener('click', navigate, true);
   }, []);
-
-  if(mobile)return <MobileHome ready={ready}/>;
 
   return <div ref={root} className="gp-springs" data-home-story="grand-pools">
     <div className="page-content-wrapper">
