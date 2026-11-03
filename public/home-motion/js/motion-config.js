@@ -6,8 +6,8 @@ window.__gpConfigureMotion = function ($) {
       const vh=innerHeight, end=Math.min(0,vh*.65-this.$container.outerHeight());
       return {'parallax--130-0':{transform:`translateY(${vh}px)`,opacity:0},
         'parallax--170-0':{transform:`translateY(${vh*.70}px)`,opacity:1},
-        'parallax--440-0':{transform:`translateY(${end}px)`,opacity:1},
-        'parallax--500-0':{transform:`translateY(${end-vh*.60}px)`,opacity:1}};
+        'parallax--360-0':{transform:`translateY(${end}px)`,opacity:1},
+        'parallax--430-0':{transform:`translateY(${end}px)`,opacity:1}};
     }
   };
   const count = Number(document.querySelector('[data-project-count]')?.dataset.projectCount || 1);

@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
 import { useSite } from '@/src/app/context/SiteContext';
-import Founder from '@/src/components/Home/Sectionseven';
+import ExpertsSection from './sections/ExpertsSection';
 import AppSection from '@/src/components/Appsection';
 import InvitationScene from './InvitationScene';
 import LazyWaveCanvas from '@/src/components/LazyWaveCanvas';
@@ -14,6 +14,7 @@ import PricingControls from './PricingControls';
 import PageProgress from './PageProgress';
 import {installHomeEntrances} from './entrances';
 import { installProjectNavigation } from './project-navigation';
+import { installMobileScenes } from './mobile-scenes';
 import { startHomeMotion } from './runtime';
 
 export default function HomeStoryFrame({ opening, collection }: { opening: ReactNode; collection: ReactNode }) {
@@ -26,6 +27,11 @@ export default function HomeStoryFrame({ opening, collection }: { opening: React
   const [error, setError] = useState(false);
   const current = useRef({ preloaderDone, menuOpen });
   current.current = { preloaderDone, menuOpen };
+
+  // Mount the desktop GPU scene under the preloader, before the reader can reach it.
+  useEffect(() => {
+    if (root.current) setWaveSlots(Array.from(root.current.querySelectorAll<HTMLElement>('[data-gp-wave-slot]')));
+  }, []);
 
   useEffect(() => {
     if(!preloaderDone || !root.current)return;
@@ -44,6 +50,11 @@ export default function HomeStoryFrame({ opening, collection }: { opening: React
     return () => { cancelled = true; };
   }, [preloaderDone, smootherRef]);
 
+  useEffect(() => {
+    if (!ready || !root.current) return;
+    return installMobileScenes(root.current);
+  }, [ready]);
+
   useEffect(()=>{
     if(!ready||!root.current||matchMedia("(max-width:1024px)").matches)return;
     return installHomeEntrances(root.current);
@@ -58,7 +69,7 @@ export default function HomeStoryFrame({ opening, collection }: { opening: React
 
   useEffect(() => {
     if (!ready || process.env.NODE_ENV !== 'development' || !root.current) return;
-    // Fast Refresh can replace opaque server markup underneath the imperative
+    // Fast Refresh can replace server-rendered component markup underneath the imperative
     // plugins. A document reload is the same lifecycle used for route changes.
     const first = root.current.querySelector<HTMLElement>('.gp-opening-story > :first-child');
     if (!first) return;
@@ -117,7 +128,7 @@ export default function HomeStoryFrame({ opening, collection }: { opening: React
         <div className="page-content js-page-content">
           {opening}
           <div className="luxury-page gp-native-expert-app" id="meet-the-expert">
-            <Stage enabled={ready} flow transition="flow" className="gp-expert-panel"><Founder /></Stage>
+            <Stage enabled={ready} flow transition="flow" className="gp-expert-panel"><ExpertsSection /></Stage>
             <Stage enabled={ready} flow transition="flow" className="gp-app-panel"><AppSection /></Stage>
           </div>
           {collection}
@@ -128,7 +139,7 @@ export default function HomeStoryFrame({ opening, collection }: { opening: React
         </div>
       </div>
     </div>
-    {waveSlots.map((slot,index)=>createPortal(<LazyWaveCanvas imageSrc="/Forest.webp" preloaderDone={preloaderDone}/>, slot, `gp-wave-${index}`))}
+    {waveSlots.map((slot,index)=>createPortal(<LazyWaveCanvas imageSrc="/Forest.webp" preloaderDone={preloaderDone} eager/>, slot, `gp-wave-${index}`))}
     {pricingSlots.map((slot, index) => createPortal(<PricingControls active={costBand} onChange={setCostBand} />, slot, `gp-cost-${index}`))}
     <PageProgress ready={ready}/>
     {error && <p className="gp-motion-error" role="status">The animation files could not load. Refresh to retry.</p>}

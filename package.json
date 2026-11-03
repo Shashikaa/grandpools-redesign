@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "test:motion": "node --test scripts/motion-v2.test.mjs",
+    "test:motion": "node --test scripts/motion-v2.test.mjs scripts/home-snap.test.mjs scripts/home-components.test.mjs",
     "preview": "node scripts/dev.mjs --production",
     "check:images": "node scripts/check-images.mjs",
     "check:home": "node scripts/check-home-story.mjs"

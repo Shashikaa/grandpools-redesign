@@ -266,9 +266,9 @@ html.gp-home-smooth .gp-invitation-view { position:relative; }
 /* Give every reading phase its own space before the next mask arrives. */
 @media(min-width:1025px) { .gp-story #about {height:700vh;} }
 .gp-story .gp-static-hero-copy,.gp-story .gp-static-hero-copy :is(h1,p,a) {opacity:1!important;visibility:visible!important;transform:none!important;animation:none!important;}
-.gp-story .l-nature__caption__inner > [data-parallax-pattern="natureCaptionMoveUp"] {min-height:580px;height:auto!important;padding-top:56px;padding-bottom:56px;}
+.gp-story .l-nature__caption__inner > [data-parallax-pattern="natureCaptionMoveUp"] {min-height:380px;height:auto!important;padding-top:56px;padding-bottom:56px;}
 .gp-story .gp-quality-prose {max-width:640px;}
-.gp-story .gp-quality-prose p {font-size:20px;line-height:1.6;}
+.gp-story .gp-quality-prose p {font-size:22px;line-height:1.6;}
 @media(max-width:1200px) {.gp-story .gp-quality-prose p {font-size:18px;}}
 /* Card size follows real copy; there is no nested scroll area. */
 .gp-story #l-residences-sticky-1 .l-residences__caption__card,.gp-story #l-residences-sticky-1 .l-residences__caption:is(:hover,:focus-within) .l-residences__caption__card {height:auto!important;max-height:none;overflow:visible;}
@@ -416,4 +416,81 @@ html.gp-home-no-webgl .gp-story [data-gp-fallback="webglNature"] {
   .gp-native-ending .gp-invitation-view,
   .gp-native-ending .gp-invitation .s9-section { height: 100svh; min-height: 100svh; }
   .gp-native-ending .gp-closing-panel { margin-top: -100svh; position: relative; z-index: 20; }
+}
+
+/* Measured handoffs: finish the left reading column before Stillness rises. */
+@media (min-width: 1025px) {
+  .gp-story #about { height: 600vh; }
+}
+.gp-story .gp-quality-static-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+/* A consistent line box keeps the rolling label the same distance above its rule. */
+.gp-springs .gp-original-button { font-family:var(--font-body),Arial,sans-serif !important; line-height:1.25 !important; padding:0 0 5px !important; vertical-align:top; }
+.gp-springs .gp-original-button .button-roll { display:block; line-height:1.25; vertical-align:top; }
+.gp-springs .gp-original-button:before { display:none !important; }
+.gp-springs .gp-original-button:after { bottom:0 !important; margin:0 !important; }
+
+@media (max-width: 1024px) {
+  /* Three process panels rise in natural document flow over the held opening. */
+  .gp-mobile-process-story { position:relative; isolation:isolate; }
+  .gp-story #about-mobile { position:sticky; top:0; z-index:0; height:100svh; margin:0; }
+  .gp-story #about-mobile > .sticky__layer { position:relative; contain:paint; height:100svh; }
+  .gp-story .gp-process-mobile-content { position:relative; z-index:1; margin:0; min-height:100svh; background:#162d24; }
+  .gp-story .gp-process-services { min-height:100svh; padding:72px 0 56px; position:relative; z-index:2; background:radial-gradient(ellipse at 100% 70%,#094146,#162d24 75%); }
+  .gp-services-gallery { position:relative; }
+  .gp-services-track { display:flex; width:100%; height:clamp(300px,48svh,520px); overflow-x:auto; scroll-snap-type:x mandatory; overscroll-behavior-x:contain; scrollbar-width:none; padding:0; margin:0; list-style:none; }
+  .gp-services-track::-webkit-scrollbar { display:none; }
+  .gp-services-slide { flex:0 0 100%; width:100%; height:100%; scroll-snap-align:start; }
+  .gp-services-slide img { display:block; width:100%; height:100%; object-fit:cover; }
+  .gp-services-tabs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; position:absolute; bottom:0; left:0; right:0; padding:36px 16px 18px; background:linear-gradient(transparent,rgb(0 0 0/.65)); }
+  .gp-services-tabs button { display:flex; flex-direction:column; justify-content:flex-end; gap:12px; min-height:64px; padding:0 0 10px; border:0; border-bottom:1px solid currentColor; background:none; color:#f4eedf; font:500 11px/1.3 var(--font-body),Arial,sans-serif; text-align:left; opacity:.55; cursor:pointer; }
+  .gp-services-tabs button[aria-pressed=true] { opacity:1; }
+  .gp-services-tabs button:focus-visible { outline:1px solid currentColor; outline-offset:4px; }
+  .gp-services-caption { padding-top:40px; min-height:210px; }
+  .gp-service-copy { animation:gp-service-change .35s ease both; }
+  .gp-service-copy h3 { font:100 28px/1.2 var(--font-display),Georgia,serif; margin:0 0 20px; }
+  .gp-service-copy p { font:400 16px/1.45 var(--font-body),Arial,sans-serif; margin:0; }
+
+  /* One viewport of Stillness. No leftover two-screen sticky tail. */
+  .gp-story #wellness-mobile { height:100svh; min-height:100svh; margin:0 !important; clip-path:none; --sticky-under-next-distance:0px; --sticky-under-previous-distance:0px; }
+  .gp-story #wellness-mobile:after { display:none; }
+  .gp-story #wellness-mobile .sticky__layer,.gp-story #wellness-mobile .l-wellness__webgl { height:100svh; min-height:100svh; }
+  .gp-story #wellness-mobile .sticky__layer { position:relative; contain:paint; }
+  .gp-story #wellness-mobile .l-wellness__webgl-caption { padding-top:100px; }
+
+  /* Two viewports of active inner movement: headline → video/prose → photograph. */
+  .gp-mobile-quality { height:300svh; position:relative; z-index:7; margin:0; }
+  .gp-mobile-quality-view { height:100svh; position:sticky; top:0; overflow:hidden; background:#162d24; }
+  .gp-mobile-quality-secondary,.gp-mobile-quality-main { position:absolute; inset:0; }
+  .gp-mobile-quality-main:after { content:''; position:absolute; inset:0; background:linear-gradient(rgb(0 0 0/.3),transparent 65%,rgb(0 0 0/.2)); }
+  .gp-mobile-quality-secondary img,.gp-mobile-quality-main > img { width:100%; height:100%; object-fit:cover; }
+  .gp-quality-mobile-heading { position:absolute; inset:0; z-index:1; padding-top:120px; text-align:right; }
+  .gp-quality-mobile-heading .gp-eyebrow { margin:0 0 14px; }
+  .gp-quality-mobile-heading > p:last-child { position:absolute; left:24px; right:24px; bottom:11svh; font:16px/1.5 var(--font-body),Arial,sans-serif; text-align:left; }
+  .gp-mobile-quality-video { position:absolute; top:12svh; right:24px; width:55%; height:38svh; z-index:2; overflow:hidden; }
+  .gp-mobile-quality-video video { width:100%; height:100%; object-fit:cover; }
+  .gp-mobile-quality-prose { position:absolute; bottom:0; left:0; width:100%; padding-top:28px; padding-bottom:32px; background:#162d24; z-index:3; }
+  .gp-mobile-quality-prose p { margin:0 0 20px; font:16px/1.5 var(--font-body),Arial,sans-serif; }
+  .gp-mobile-quality-prose p:last-child { margin-bottom:0; }
+  .gp-story .gp-quality-gallery { position:relative; z-index:8; }
+
+  /* The intro holds while the actual gallery rises; no empty 300vh runway. */
+  .gp-mobile-project-story { position:relative; isolation:isolate; z-index:12; }
+  .gp-story #l-residences-sticky-2 { position:sticky; top:0; height:100svh; min-height:100svh; margin:0 !important; clip-path:none; contain:none; content-visibility:visible; --sticky-under-next-distance:0px; --sticky-under-previous-distance:0px; }
+  .gp-story #l-residences-sticky-2:after { display:none; }
+  .gp-story #l-residences-sticky-2 .sticky__layer { position:relative; contain:paint; height:100svh; }
+  .gp-story #l-residences-sticky-2 .l-residences__webgl { height:100svh; }
+  .gp-story #residences-mobile { position:absolute; top:0; width:0; height:0; }
+  .gp-story #l-residences-sticky-2 .l-residences__webgl-caption { height:100%; padding-top:110px; padding-bottom:60px; }
+  .gp-story #l-residences-sticky-2 .l-residences__webgl-caption > .col { height:100%; justify-content:flex-start; }
+  .gp-story .gp-mobile-project-intro-description { font:16px/1.5 var(--font-body),Arial,sans-serif; margin-top:auto !important; order:3; max-width:430px; }
+  .gp-story .gp-mobile-project-slider { position:relative; z-index:2; margin:0; min-height:0; background:#162d24; }
+}
+@keyframes gp-service-change { from {opacity:0;transform:translateY(10px)} to {opacity:1;transform:translateY(0)} }
+@media (prefers-reduced-motion:reduce) {
+  .gp-service-copy { animation:none; }
+  .gp-mobile-quality { height:auto; }
+  .gp-mobile-quality-view { position:relative; height:auto; }
+  .gp-mobile-quality-main,.gp-mobile-quality-video,.gp-mobile-quality-prose { position:relative; inset:auto; }
+  .gp-mobile-quality-main { height:100svh; }
+  .gp-mobile-quality-video { height:38svh; margin:24px 24px 24px auto; }
 }

@@ -1,5 +1,6 @@
 import {chooseCheckpoint,orderedCheckpoints} from './scroll-model';
 import gsap from 'gsap';
+import { canUseHomeWebGL } from './graphics-support';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 type LegacyQuery = any; // The retained, isolated public runtime exposes a jQuery plugin API.
@@ -33,13 +34,7 @@ function loadScript(src: string) {
 const frame = () => new Promise<void>(resolve => requestAnimationFrame(() => resolve()));
 
 function prepareGraphics(root: HTMLElement) {
-  let webgl = false;
-  try {
-    const probe = document.createElement('canvas');
-    const context = probe.getContext('webgl2') || probe.getContext('webgl');
-    webgl = Boolean(context);
-    context?.getExtension('WEBGL_lose_context')?.loseContext();
-  } catch { /* Static GP imagery remains visible without a GPU context. */ }
+  const webgl = canUseHomeWebGL();
   document.documentElement.classList.toggle('gp-home-webgl', webgl);
   if (webgl) return;
   document.documentElement.classList.add('gp-home-no-webgl');
@@ -117,7 +112,10 @@ export function startHomeMotion(root: HTMLElement): Promise<HomeScroller> {
       let timer:ReturnType<typeof setTimeout>;
       const measureStops=()=>{
         const max=Math.max(0,(nativeParent as HTMLElement).scrollHeight-innerHeight);
-        const authored=engine.getSnapPoints().map((point:any)=>{
+        const authored=engine.getSnapPoints().filter((point:any) => {
+          const element = point.reference.get(0) as HTMLElement;
+          return element.getClientRects().length > 0 && element.offsetHeight > 0;
+        }).map((point:any)=>{
           const box=$(point.reference).pageOffset();
           return box.scrollTop-box.scrollViewportSize*point.viewport+box.height*point.element;
         });

@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import Invitation from '@/src/components/Home/SectionNine';
+import InvitationSection from './sections/InvitationSection';
 import PricingControls from './PricingControls';
 
 const clamp = (n:number) => Math.max(0, Math.min(1,n));
@@ -40,5 +40,5 @@ export default function InvitationScene({ready,costBand}:{ready:boolean;costBand
     update();window.addEventListener('grandpools:scroll',update);window.addEventListener('resize',update);
     return()=>{window.removeEventListener('grandpools:scroll',update);window.removeEventListener('resize',update)};
   },[ready]);
-  return <section ref={root} className="gp-invitation" id="gp-invitation"><div className="gp-invitation-view" data-scroll="" data-scroll-sticky="" data-scroll-target="#gp-invitation"><div className="gp-invitation-underlay gp-story js-scroll-parent-ignore" aria-hidden="true" inert><PricingControls active={costBand}/></div><Invitation/></div></section>;
+  return <section ref={root} className="gp-invitation" id="gp-invitation"><div className="gp-invitation-view" data-scroll="" data-scroll-sticky="" data-scroll-target="#gp-invitation"><div className="gp-invitation-underlay gp-story js-scroll-parent-ignore" aria-hidden="true" inert><PricingControls active={costBand}/></div><InvitationSection/></div></section>;
 }

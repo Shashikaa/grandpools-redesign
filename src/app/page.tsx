@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import HomeStoryFrame from "@/src/components/HomeStory/HomeStoryFrame";
-import { getHomeStoryMarkup } from "@/src/components/HomeStory/story-markup";
+import HomeOpening from "@/src/components/HomeStory/HomeOpening";
+import HomeCollection from "@/src/components/HomeStory/HomeCollection";
 import "@/src/components/HomeStory/home-story.css";
 
 export const metadata: Metadata = {
@@ -42,18 +43,11 @@ export const metadata: Metadata = {
   },
 };
 
-/**
- * Grand Pools content is server-rendered into the retained scene structure.
- * Shared components remain React components outside the opaque motion fragments.
- */
+/** Server Components render the scene markup; the client frame owns motion. */
 export default function HomePage() {
-  const { opening, collection } = getHomeStoryMarkup();
   return <>
     <link rel="stylesheet" href="/home-motion/global.css" />
     <link rel="stylesheet" href="/home-motion/landing.css" />
-    <HomeStoryFrame
-      opening={<div key="opening" className="gp-story js-scroll-parent-ignore gp-opening-story ui-dark" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: opening }} />}
-      collection={<div key="collection" className="gp-story js-scroll-parent-ignore gp-collection-story ui-dark" suppressHydrationWarning dangerouslySetInnerHTML={{ __html: collection }} />}
-    />
+    <HomeStoryFrame opening={<HomeOpening />} collection={<HomeCollection />} />
   </>;
 }

@@ -34,7 +34,7 @@ test('wheel easing converges smoothly and touch retains native momentum', () => 
   assert.equal(previous,1); assert.equal(scrollSettings.syncTouch,false);
 });
 test('all route controllers are free of the retired virtual-scroll engine', () => {
-  const files=['HomeDesktop.tsx','HomeMobile.tsx','about/AboutDesktop.tsx','about/AboutMobile.tsx','contact/ContactDesktop.tsx','contact/ContactMobile.tsx','services/ServiceDesktop.tsx','services/ServiceMobile.tsx','services/[slug]/SubServicesDesktop.tsx','services/[slug]/SubServicesMobile.tsx','projects/ProjectsDesktop.tsx','projects/ProjectsMobile.tsx','projects/[slug]/SingleProjectPageDesktop.tsx','projects/[slug]/SingleProjectPageMobile.tsx'];
+  const files=['page.tsx','about/AboutDesktop.tsx','about/AboutMobile.tsx','contact/ContactDesktop.tsx','contact/ContactMobile.tsx','services/ServiceDesktop.tsx','services/ServiceMobile.tsx','services/[slug]/SubServicesDesktop.tsx','services/[slug]/SubServicesMobile.tsx','projects/ProjectsDesktop.tsx','projects/ProjectsMobile.tsx','projects/[slug]/SingleProjectPageDesktop.tsx','projects/[slug]/SingleProjectPageMobile.tsx'];
   for(const file of files){const text=fs.readFileSync(new URL('../src/app/'+file,import.meta.url),'utf8');assert.doesNotMatch(text,/targetProgress|fixedFrameRef|requestAnimationFrame|requestSceneFrame|gp-pin-track|stepProgress/,file);}
 });
 test('hero typography has no inherited zero-opacity intro gate', () => {

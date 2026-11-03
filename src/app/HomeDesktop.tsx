@@ -13,20 +13,21 @@ import Pricing from "@/src/components/Home/WhatAPoolCosts";
 import Invitation from "@/src/components/Home/SectionNine";
 import CTA from "@/src/components/SectionCTA";
 import Footer from "@/src/components/Footer";
+
 export default function Home() {
- const { preloaderDone } = useSite();
- return <LuxuryPage>
-  <Stage kind="home-hero"><Hero /></Stage>
-  <Stage kind="process"><Process /></Stage>
-  <Stage kind="harmony"><Harmony preloaderDone={preloaderDone} /></Stage>
-  <Stage kind="quality"><Quality /></Stage>
-  <Stage skipText transition="slide"><Projects /></Stage>
-  <Stage flow className="luxury-expert-app">
-   <div className="luxury-expert-panel"><Founder /></div>
-   <div className="luxury-app-panel"><App /></div>
-  </Stage>
-  <Stage flow className="luxury-pricing"><Pricing /></Stage>
-  <Stage kind="invitation" className="luxury-invitation"><Invitation /></Stage>
-  <Stage flow transition="slide" className="luxury-ending"><CTA /><div data-luxury-skip><Footer /></div></Stage>
- </LuxuryPage>;
+  const { preloaderDone } = useSite();
+  return <LuxuryPage>
+    <Stage kind="home-hero"><Hero /></Stage>
+    <Stage kind="process"><Process /></Stage>
+    <Stage kind="harmony"><Harmony preloaderDone={preloaderDone} /></Stage>
+    <Stage kind="quality"><Quality /></Stage>
+    <Stage skipText transition="slide"><Projects /></Stage>
+    <Stage flow className="luxury-expert-app">
+      <div className="luxury-expert-panel"><Founder /></div>
+      <div className="luxury-app-panel"><App /></div>
+    </Stage>
+    <Stage flow className="luxury-pricing"><Pricing /></Stage>
+    <Stage kind="invitation" className="luxury-invitation"><Invitation /></Stage>
+    <Stage flow transition="slide" className="luxury-ending"><CTA /><div data-luxury-skip><Footer /></div></Stage>
+  </LuxuryPage>
 }
