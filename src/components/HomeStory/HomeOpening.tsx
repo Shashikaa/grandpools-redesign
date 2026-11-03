@@ -6,9 +6,11 @@ import QualitySection from './sections/QualitySection';
 /** Server-rendered scene components. No filesystem templates or HTML injection. */
 export default function HomeOpening() {
   return <div className="gp-story js-scroll-parent-ignore gp-opening-story ui-dark">
-    <HeroSection />
-    <ProcessSection />
-    <HarmonySection />
+    <div className="gp-process-harmony-sequence">
+      <HeroSection />
+      <ProcessSection />
+      <HarmonySection />
+    </div>
     <QualitySection />
   </div>;
 }

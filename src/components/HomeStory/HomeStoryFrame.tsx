@@ -13,8 +13,10 @@ import Stage from '@/src/components/motion/LuxuryStage';
 import PricingControls from './PricingControls';
 import PageProgress from './PageProgress';
 import {installHomeEntrances} from './entrances';
-import { installProjectNavigation } from './project-navigation';
+import { installHeroHold } from './hero-hold';
 import { installMobileScenes } from './mobile-scenes';
+import { installDesktopProjects } from './desktop-projects';
+import { installExpertAppTransition } from './expert-app-transition';
 import { startHomeMotion } from './runtime';
 
 export default function HomeStoryFrame({ opening, collection }: { opening: ReactNode; collection: ReactNode }) {
@@ -55,6 +57,14 @@ export default function HomeStoryFrame({ opening, collection }: { opening: React
     return installMobileScenes(root.current);
   }, [ready]);
 
+  useEffect(() => {
+    if (!ready || !root.current) return;
+    const ending=installExpertAppTransition(root.current);
+    const projects=installDesktopProjects(root.current);
+    const hero=installHeroHold(root.current);
+    return()=>{ending();projects();hero();};
+  }, [ready]);
+
   useEffect(()=>{
     if(!ready||!root.current||matchMedia("(max-width:1024px)").matches)return;
     return installHomeEntrances(root.current);
@@ -62,7 +72,7 @@ export default function HomeStoryFrame({ opening, collection }: { opening: React
 
   useEffect(() => {
     if (!ready || !root.current) return;
-    const cleanup = installProjectNavigation(root.current);
+    const cleanup = () => {};
     const frame = requestAnimationFrame(() => smootherRef?.current?.resize());
     return () => { cancelAnimationFrame(frame); cleanup(); };
   }, [ready, smootherRef]);
@@ -126,10 +136,14 @@ export default function HomeStoryFrame({ opening, collection }: { opening: React
     <div className="page-content-wrapper">
       <div className="page-content-wrapper__inner js-page-content-wrapper">
         <div className="page-content js-page-content">
+          <div className="gp-opening-expert-sequence">
           {opening}
           <div className="luxury-page gp-native-expert-app" id="meet-the-expert">
+            <div className="gp-expert-app-view">
             <Stage enabled={ready} flow transition="flow" className="gp-expert-panel"><ExpertsSection /></Stage>
             <Stage enabled={ready} flow transition="flow" className="gp-app-panel"><AppSection /></Stage>
+            </div>
+          </div>
           </div>
           {collection}
           <div className="luxury-page gp-native-ending">

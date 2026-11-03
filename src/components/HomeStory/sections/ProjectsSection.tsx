@@ -1,3 +1,4 @@
+import MobileProjects from "./MobileProjects";
 import { HOME_PROJECTS } from "../scene-data";
 import { ProjectSlide, ProjectCard, ProjectMobileImage, ProjectMobileCard, ProjectThumbnail } from "./ProjectItems";
 import { motionData } from "../motion-attributes";
@@ -31,8 +32,8 @@ export default function ProjectsSection() {
         </div>
         {HOME_PROJECTS.map(project => <ProjectSlide key={project.slug} project={project} />)}
       </div>
-      <div className="sticky__layer sticky__layer--sticky" data-parallax-pattern="residencesSlide" data-plugin="parallax" data-scroll="" data-scroll-sticky="" data-scroll-target="#l-residences-sticky-1">
-        <div className="l-residences__caption col col--md-3 offset--md-9" data-parallax--100-0={motionData({"transform": "translateX(60vw)"})} data-parallax--200-0={motionData({"transform": "translateX(0vw)"})} data-parallax-clamp="true" data-parallax-enable-mq="md-up" data-parallax-measure-selector=".sticky" data-plugin="parallax">
+      <div className="sticky__layer sticky__layer--sticky" data-scroll="" data-scroll-sticky="" data-scroll-target="#l-residences-sticky-1">
+        <div className="l-residences__caption col col--md-3 offset--md-9">
           <div className="l-residences__caption__line">
             <div className="l-residences__caption__line-progress js-residences-progress-line" />
           </div>
@@ -72,30 +73,7 @@ export default function ProjectsSection() {
       <div id="residences-mobile" />
       <div className="l-residences__theme" data-themed-class="ui-dark" />
     </div>
-    <div className="l-residences__slider-container gp-mobile-project-slider gp-mobile-rise is-hidden--lg-up ui-dark ui-background">
-      <div className="l-residences__slider__gradient">
-        <div />
-      </div>
-      <div className="l-residences__slider pt-3">
-        <div className="l-residences__slider__images mx-layout js-residences-content-animation-controller" data-plugin="mobileScrollable">
-          <div className="p-relative">
-            <ul className="mobile-scrollable col col--md-auto mx-auto">
-              {HOME_PROJECTS.map(project => <ProjectMobileImage key={project.slug} project={project} />)}
-            </ul>
-          </div>
-          <div className="gp-project-thumbs group group--nowrap" aria-label="Choose a project">
-            {HOME_PROJECTS.map(project => <ProjectThumbnail key={project.slug} project={project} />)}
-          </div>
-        </div>
-        <div className="l-residences__caption col col--xs-4 ui-dark">
-          <div data-content-animation-animations={motionData({"changeShow": {"name": "fadeIn"}, "changeHide": {"name": "fadeOut"}})} data-content-animation-controller-selector=":root .js-residences-content-animation-controller" data-content-animation-fixed-height="false" data-content-animation-plugins="controller events height counter" data-plugin="contentAnimation">
-            <div className="l-residences__caption-text content-animation col col--md-12">
-              {HOME_PROJECTS.map(project => <ProjectMobileCard key={project.slug} project={project} />)}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <MobileProjects />
     </div>
   </>;
 }

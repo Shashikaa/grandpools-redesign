@@ -1,4 +1,5 @@
 import type { CSSProperties } from "react";
+import QualityGallery from "./QualityGallery";
 import { motionData } from "../motion-attributes";
 
 /** Existing scene geometry and data attributes are the animation API. */
@@ -154,6 +155,7 @@ export default function QualitySection() {
             <p>We turn ambitious architectural visions into enduring aquatic retreats, tailored specifically to how you live.</p>
           </div>
         </div>
+        <div className="gp-mobile-quality-details">
         <div className="gp-mobile-quality-video">
           <video aria-label="Grand Pools pool water" loop muted playsInline poster="/pool-poster.webp" preload="metadata">
             <source src="/videos/Grand-Pools-Hero-Video.webm" type="video/webm" />
@@ -163,50 +165,9 @@ export default function QualitySection() {
           <p>At Grand Pools, we focus on every detail to deliver exceptional results, combining innovative design, modern technologies, premium materials, and proven construction techniques.</p>
           <p>Our commitment to quality, durability, clear communication, and a seamless process ensures your pool is built to last and exceeds expectations.</p>
         </div>
+        </div>
       </div>
     </section>
-    <div className="l-place-mobile gp-quality-gallery gp-mobile-rise pt-3 is-hidden--lg-up">
-      <div className="l-nature__slider__images col js-nature-content-animation-controller" data-plugin="mobileScrollable">
-        <div className="col col--xs-4 col--md-6 ui-dark mb-2 px-layout">
-          <div data-content-animation-animations={motionData({"changeShow": {"name": "fadeIn"}, "changeHide": {"name": "fadeOut"}})} data-content-animation-controller-selector=":root .js-nature-content-animation-controller" data-content-animation-fixed-height="true" data-content-animation-plugins="controller events height counter" data-plugin="contentAnimation">
-            <div className="content-animation">
-              <div aria-hidden="false" className="" data-content-animation-item="1">
-                <p className="text-t1 leading-trim">
-                  {"Our commitment to quality, durability, clear communication, and a seamless process ensures your pool is built to last and exceeds expectations."}
-                </p>
-              </div>
-              <div aria-hidden="true" className="is-hidden" data-content-animation-item="2">
-                <p className="text-t1 leading-trim">
-                  {"Expert craftsmanship and attention to detail bring your vision to life, delivering seamless pool solutions from concept to completion."}
-                </p>
-              </div>
-              <div aria-hidden="true" className="is-hidden" data-content-animation-item="3">
-                <p className="text-t1 leading-trim">
-                  {"At Grand Pools, we create custom swimming pools that balance style, function, and quality. Each pool is designed to complement its outdoor setting while adding lasting value and elegance to your home or business."}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mx-layout p-relative">
-          <ul className="mobile-scrollable col col--md-auto mx-auto">
-            <li className="mobile-scrollable__item">
-              <img alt="Grand Pools completed swimming pool" className="img-cover is-invisible--js is-hidden--no-js" data-plugin="appear" data-src="/camberwell3.webp" src="/camberwell3.webp" draggable="false" height="760" width="640" />
-            </li>
-            <li className="mobile-scrollable__item">
-              <img alt="Grand Pools completed swimming pool" className="img-cover is-invisible--js is-hidden--no-js" data-plugin="appear" data-src="/sliderimage1.webp" src="/sliderimage1.webp" draggable="false" height="760" width="640" />
-            </li>
-            <li className="mobile-scrollable__item">
-              <img alt="Grand Pools completed swimming pool" className="img-cover is-invisible--js is-hidden--no-js" data-plugin="appear" data-src="/camberwell.webp" src="/camberwell.webp" draggable="false" height="760" width="640" />
-            </li>
-          </ul>
-          <div className="carousel__thumb group group--nowrap px-layout">
-            <div className="col col--xs-2 text-c1 carousel__thumb__item js-mobile-scrollable-thumbnail is-active" />
-            <div className="col col--xs-2 text-c1 carousel__thumb__item js-mobile-scrollable-thumbnail" />
-            <div className="col col--xs-2 text-c1 carousel__thumb__item js-mobile-scrollable-thumbnail" />
-          </div>
-        </div>
-      </div>
-    </div>
+    <QualityGallery />
   </>;
 }

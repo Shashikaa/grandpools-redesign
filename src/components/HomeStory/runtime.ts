@@ -61,6 +61,10 @@ export function startHomeMotion(root: HTMLElement): Promise<HomeScroller> {
     root.querySelectorAll<HTMLElement>('.gp-expert-panel,.gp-app-panel,#gp-invitation,#contact-form').forEach(el=>{
       el.dataset.scrollSnapPoint=JSON.stringify([{viewport:0,element:0}]);
     });
+    if(innerWidth>1024) {
+      const hero=root.querySelector<HTMLElement>('#l-gallery-sticky > .sticky__layer');
+      if(hero){['data-scroll','data-scroll-sticky','data-scroll-target'].forEach(name=>hero.removeAttribute(name));hero.dataset.gpHeroHold='true';}
+    }
     prepareGraphics(root);
     await document.fonts.ready;
     // Queue the page chunk before the shared bootstrap can run jQuery.ready.
@@ -114,11 +118,16 @@ export function startHomeMotion(root: HTMLElement): Promise<HomeScroller> {
         const max=Math.max(0,(nativeParent as HTMLElement).scrollHeight-innerHeight);
         const authored=engine.getSnapPoints().filter((point:any) => {
           const element = point.reference.get(0) as HTMLElement;
-          return element.getClientRects().length > 0 && element.offsetHeight > 0;
+          return !element.matches(".gp-expert-panel,.gp-app-panel") && element.getClientRects().length > 0 && element.offsetHeight > 0;
         }).map((point:any)=>{
           const box=$(point.reference).pageOffset();
           return box.scrollTop-box.scrollViewportSize*point.viewport+box.height*point.element;
         });
+        const expertGroup=root.querySelector<HTMLElement>('.gp-native-expert-app');
+        if(expertGroup) {
+          const top=expertGroup.getBoundingClientRect().top+adapter.scroll;
+          authored.push(top,top+innerHeight);
+        }
         const invitation=root.querySelector('#gp-invitation');
         const innerEnd=invitation ? invitation.getBoundingClientRect().top+adapter.scroll+innerHeight*1.35 : 0;
         stops=orderedCheckpoints([0,...authored,innerEnd],max);

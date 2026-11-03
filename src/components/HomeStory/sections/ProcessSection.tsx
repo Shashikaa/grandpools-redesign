@@ -84,6 +84,7 @@ export default function ProcessSection() {
       <div className="l-intro__anchor" id="l-intro" />
     </div>
     <div className="gp-mobile-process-story is-hidden--lg-up">
+    <div className="gp-process-mobile-view">
     <div className="l-intro sticky sticky--full-height gp-mobile-rise" id="about-mobile">
       <div className="sticky__layer sticky__layer--sticky sticky--full-height" data-scroll="" data-scroll-sticky="" data-scroll-target="#about-mobile">
         <div className="l-intro__image l-intro__image--first" id="l-intro-mobile">
@@ -142,6 +143,7 @@ export default function ProcessSection() {
       </div>
     </div>
     <ProcessServices />
+    </div>
     </div>
   </>;
 }

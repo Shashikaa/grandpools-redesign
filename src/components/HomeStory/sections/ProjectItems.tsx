@@ -13,7 +13,7 @@ export function ProjectSlide({ project }: Props) {
     [`data-parallax--${(index + 3) * 100}-0`]: motionData({ 'clip-path': 'polygon(0% 0%,100% 0%,100% 100%,0% 100%)', transform: 'scale(1)' }),
     [`data-parallax--${(index + 1) * 100}-0`]: motionData({ 'clip-path': 'polygon(100% 0%,100% 0%,100% 100%,100% 100%)', transform: 'scale(1.2)' }),
   };
-  return <div className="l-residences__slide" {...keyframes} data-parallax-clamp="true" data-parallax-enable-mq="md-up" data-parallax-measure-selector=".sticky" data-plugin="parallax">
+  return <div className="l-residences__slide" data-gp-project-slide={project.number} {...keyframes} data-parallax-clamp="true" data-parallax-enable-mq="md-up" data-parallax-measure-selector=".sticky">
     <div className="background background--cover">
       <picture className="is-invisible--js is-hidden--no-js img-cover parallax-image-move" data-plugin="appear" draggable={false}>
         <img alt={`${project.title} swimming pool by Grand Pools`} className="img-cover" decoding="async" loading="lazy" src={project.image} />

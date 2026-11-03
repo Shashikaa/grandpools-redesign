@@ -15,11 +15,19 @@ test('the homepage renders React components without filesystem HTML templates or
   assert.equal(fs.existsSync('src/components/HomeStory/story-markup.ts'), false);
 });
 
-test('the hero keeps all entrance masks, collage photographs and original image priority', () => {
+test('the hero keeps its masks and photographs with responsive browser-discovered images', () => {
   const hero = renderSection('HeroSection');
   assert.equal((hero.match(/class="l-gallery__item__mask-list__item gallery-animation-item"/g) || []).length, 6);
   assert.equal((hero.match(/js-gallery-item"/g) || []).length, 19);
-  assert.match(hero, /fetchPriority="high"[^>]*src="\/murray-st-prahran.webp"/i);
+  assert.match(hero, /fetchPriority="high"/i);
+  assert.equal((hero.match(/<img\b/g) || []).length, 25);
+  assert.doesNotMatch(hero, /data-plugin="appear"|data-src=|is-invisible--js/);
+  const media = loadSource('src/components/HomeStory/hero-media.ts').HERO_MEDIA;
+  for (const item of Object.values(media)) {
+    assert.ok(hero.includes(item.src));
+    assert.ok(item.variants[0].bytes < item.originalBytes);
+    for (const variant of item.variants) assert.ok(fs.existsSync(`public${variant.src}`));
+  }
   assert.match(hero, /aria-label="See Our Projects"/);
 });
 
@@ -28,7 +36,7 @@ test('each real project keeps a desktop card, mobile card, image and matching nu
   assert.equal((html.match(/class="gp-project-thumb /g) || []).length, projects.length);
   for (const project of projects) {
     assert.ok(html.includes(`href="${project.href}"`));
-    assert.equal((html.match(new RegExp(`data-content-animation-item="${project.number}"`, 'g')) || []).length, 2);
+    assert.equal((html.match(new RegExp(`data-content-animation-item="${project.number}"`, 'g')) || []).length, 1);
     const images = [...html.matchAll(/<img\b[^>]*>/g)].map(match => match[0]);
     assert.equal(images.filter(tag => tag.includes(`alt="${project.title} swimming pool by Grand Pools"`) && tag.includes(`src="${project.image}"`)).length, 2);
   }

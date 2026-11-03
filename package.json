@@ -11,7 +11,8 @@
     "test:motion": "node --test scripts/motion-v2.test.mjs scripts/home-snap.test.mjs scripts/home-components.test.mjs",
     "preview": "node scripts/dev.mjs --production",
     "check:images": "node scripts/check-images.mjs",
-    "check:home": "node scripts/check-home-story.mjs"
+    "check:home": "node scripts/check-home-story.mjs",
+    "optimize:hero": "node scripts/optimize-hero.mjs"
   },
   "dependencies": {
     "curtainsjs": "^8.1.6",

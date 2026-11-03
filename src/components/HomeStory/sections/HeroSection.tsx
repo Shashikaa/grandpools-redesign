@@ -2,12 +2,7 @@ import type { CSSProperties } from "react";
 import RollingText from '@/src/components/RollingText';
 import { HERO_COLLAGE_IMAGES } from '../scene-data';
 import { motionData } from '../motion-attributes';
-
-const sourceMedia = [
-  '(min-width: 1920px) and (min-height: 700px)',
-  '(min-width: 1440px) and (min-height: 700px)',
-  '(min-width: 568px) and (max-aspect-ratio: 13 / 9), (min-width: 668px) and (min-height: 416px), (min-width: 980px)',
-];
+import { HERO_MEDIA, HERO_TILE_SIZES } from '../hero-media';
 
 function HeroSplit() {
   return <div className="l-gallery__split row background background--cover">
@@ -15,8 +10,7 @@ function HeroSplit() {
       <div className="l-gallery__item__mask-list">
         {[0, 1, 2].map(mask => <div key={mask} className="l-gallery__item__mask-list__item gallery-animation-item">
           <picture className="" draggable={false}>
-            {sourceMedia.map(media => <source key={media} height="900" media={media} srcSet="/hero-home.webp" width="720" />)}
-            <img alt="" draggable={false} fetchPriority="high" height="900" src="/hero-home.webp" width="720" />
+            <img alt="" draggable={false} fetchPriority="high" decoding="async" height="900" src={HERO_MEDIA['/hero-home.webp'].src} srcSet={HERO_MEDIA['/hero-home.webp'].srcSet} sizes="50vw" width="720" />
           </picture>
         </div>)}
       </div>
@@ -24,17 +18,17 @@ function HeroSplit() {
   </div>;
 }
 
-function CollagePicture({ src, mobile = false }: { src: string; mobile?: boolean }) {
-  return <picture className="is-invisible--js is-hidden--no-js img-full" data-plugin="appear" draggable={false}>
-    {!mobile && sourceMedia.map(media => <source key={media} data-srcset={src} height="480" media={media} srcSet={src} width="360" />)}
-    <img alt="" data-src={src} decoding="async" draggable={false} fetchPriority={src === "/murray-st-prahran.webp" ? "high" : "low"} height="480" src={src} width="360" />
+function CollagePicture({ src }: { src: (typeof HERO_COLLAGE_IMAGES)[number] }) {
+  const image = HERO_MEDIA[src];
+  // Above-the-fold pictures are browser-discovered and never wait for appear/lazy plugins.
+  return <picture className="img-full" draggable={false}>
+    <img alt="" loading="eager" decoding="async" draggable={false} height="480" src={image.src} srcSet={image.srcSet} sizes={HERO_TILE_SIZES} width="360" />
   </picture>;
 }
 
-function CollageItem({ src }: { src: string }) {
+function CollageItem({ src }: { src: (typeof HERO_COLLAGE_IMAGES)[number] }) {
   return <div className="l-gallery__item col col--xs-2 col--md-6 col--lg-3 js-gallery-item">
-    <div className="is-hidden--sm-down"><CollagePicture src={src} /></div>
-    <div className="is-hidden--md-up"><CollagePicture src={src} mobile /></div>
+    <CollagePicture src={src} />
   </div>;
 }
 

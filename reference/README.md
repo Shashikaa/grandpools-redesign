@@ -1,0 +1,1 @@
+The latest upstream repository contains an unused alternative scene draft whose content constants are missing. Its original files are preserved unchanged in inactive-scene-draft.zip. The active homepage imports HomeOpening and HomeCollection and uses components under HomeStory/sections. The draft was archived so it does not break TypeScript compilation.

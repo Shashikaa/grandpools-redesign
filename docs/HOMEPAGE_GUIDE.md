@@ -1,4 +1,13 @@
+Latest hero update: see HERO_LOADING_UPDATE.md for responsive WebP assets,
+eager loading without the appear gate, and the gradient shared with desktop.
+
+Latest changes: read PANELS_PROJECTS_UPDATE.md for bounded mobile Expert/App
+handoffs, compact controls, font minimums and synchronized five-project beats.
+
 # How the Grand Pools homepage works
+
+See PANELS_PROJECTS_UPDATE.md for the latest mobile overlap, typography,
+React project controls and synchronized desktop project beats.
 
 ## The simple explanation
 
@@ -100,18 +109,21 @@ mobile-scenes.ts installs a scoped GSAP matchMedia context at widths up to 1024p
 It cleans up its own triggers/styles when that media mode is left. It uses CSS
 sticky where a scene must hold; it creates no ScrollTrigger pin spacers.
 
-- Process: the opening image holds behind the incoming founder panel. Panel crops,
-  the founder text, engineering text and image rise into view while scrolling.
+- Process: one held viewport layers all three panels. The founder panel rises over
+  the opening photo, scrolls through any tall content, then lifts away to reveal
+  the service gallery beneath it. Stillness rises over the held gallery. See
+  LATEST_MOBILE_FIXES.md for the updated measurements and repository provenance.
 - Service gallery: ProcessServices owns one active React index. Swiping its native
   scroll-snap track or choosing a tab selects the same image/caption. Exactly three
-  slides exist. A short whole-block caption transition replaces character motion.
-- Stillness: one viewport, with an entering background zoom and caption rise.
+  slides exist. Captions switch directly, without a text animation.
+- Stillness: one viewport, entering in normal flow with static copy.
   There is no extra blank reading hold after it.
 - Quality: a three-viewport container holds one viewport of artwork. The remaining
-  two viewports drive the inner story: title fades → video/prose rise → first
-  background wipes → video/prose move up → the following gallery enters.
-- Gallery, Expert and App: rising crops, background movement and copy/phone reveals
-  continue the section entrances without preventing natural touch scrolling.
+  two viewports drive flat vertical slides of the complete intro/detail panels.
+  Text remains static inside each panel; the following gallery enters normally.
+- Quality, Expert and App share a bounded wrapper. Quality can hold behind the
+  incoming Expert panel, then Expert lifts to uncover App. The wrapper ends before
+  Projects/pricing, so the held gallery cannot appear again later. Copy stays static.
 - Projects: its introduction contains the desktop paragraph. It stays sticky inside
   a wrapper shared with the actual slider. The slider immediately rises over it;
   no unused multi-screen runway sits between them.
@@ -156,9 +168,10 @@ HomeStoryFrame owns the selected price band and portals PricingControls into the
 responsive outlets. The invitation underlay receives the same selection. Height
 changes notify the shared adapter so later scenes are measured again.
 
-The project gallery's retained controller synchronizes its image and caption.
-project-navigation.ts keeps a window of three names around the active project;
-all five existing projects remain available.
+MobileProjects owns one React index for the selected photo, title, category,
+paragraph and link, using the same direct text update as PricingControls. It keeps
+three project names in view. Desktop desktop-projects.ts uses five common mask/
+caption checkpoints, including reverse scrolling. All five projects remain available.
 
 Opening menus/modals or showing the preloader stops the adapter. Closing them
 starts the same adapter. Do not start a second controller to resume scrolling.

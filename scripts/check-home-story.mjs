@@ -6,7 +6,9 @@ const failures=[];
 for(const forbidden of [/springs\.estate/i,/kinescope/i,/Quadro Room/i,/UNIQ Development/i,/Nature Park/i,/\/assets\/images\//,/\/media\/cache\//]) {
   if(forbidden.test(text))failures.push(`Reference business content or media remains: ${forbidden}`);
 }
-const paths=new Set([...text.matchAll(/(?:data-)?(?:src|srcset)="(\/[^"{]+)"/g)].map(match=>decodeURIComponent(match[1].split('?')[0])));
+const paths=new Set([...text.matchAll(/(?:data-)?(src|srcset)="(\/[^"{]+)"/gi)].flatMap(match =>
+  (match[1].toLowerCase() === 'srcset' ? match[2].split(',').map(candidate => candidate.trim().split(/\s+/)[0]) : [match[2]])
+    .map(url => decodeURIComponent(url.split('?')[0]))));
 for(const url of paths)if(!fs.existsSync(path.join('public',url)))failures.push(`Missing homepage asset: ${url}`);
 const source = loadSource('src/app/projects/[slug]/data.ts');
 for(const [slug,project] of Object.entries(source.GRAND_POOLS_DATA)){
@@ -27,6 +29,6 @@ const nature = renderSection('QualitySection').split('id="nature-mobile"')[1];
 if(!nature?.includes('gp-mobile-quality-view') || !nature.includes('gp-mobile-quality-prose'))failures.push('Mobile Quality timeline outlets are missing');
 if(!fs.readFileSync('src/components/HomeStory/HomeStoryFrame.tsx','utf8').includes('installMobileScenes'))failures.push('Mobile Quality timeline is not mounted');
 const projects = renderSection('ProjectsSection');
-if(!projects.includes('data-content-animation-controller-selector=":root .js-residences-content-animation-controller"'))failures.push('Mobile project swipe/caption synchronization is disconnected');
+if(!projects.includes('gp-native-project-track') || !projects.includes('aria-label="Our pool projects"'))failures.push('Mobile React project gallery is disconnected');
 if(failures.length){console.error(failures.join('\n'));process.exit(1);}
 console.log(`Verified ${paths.size} local homepage media paths, ${Object.keys(source.GRAND_POOLS_DATA).length} real projects, and both GP WebGL texture sets.`);
