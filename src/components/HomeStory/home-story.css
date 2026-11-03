@@ -1,0 +1,285 @@
+/* Grand Pools brand surrounds the imported scene geometry. These rules apply
+   only on the homepage; shared React components retain their authored styles. */
+.gp-home-smooth-host { display: contents; }
+.site-root:has(.gp-springs) { display: block; overflow: visible !important; min-height: 0 !important; }
+.gp-springs, .gp-springs .page-content-wrapper, .gp-springs .page-content-wrapper__inner { position: relative; width: 100%; }
+.gp-springs .page-content { display: flex; flex-direction: column; align-items: stretch; width: 100%; position: relative; }
+.gp-story { display: flow-root; position: relative; height: auto; overflow: visible !important; font-family: var(--font-body), Arial, sans-serif; }
+.gp-story > div { flex-shrink: 0; }
+html.gp-home-active.has-scroll-smooth, html.gp-home-active.has-scroll-smooth body { overflow: hidden !important; }
+html.gp-home-active .site-root { outline: none; }
+html.gp-home-active.header-scrolled #site-header .glass-backdrop { background: rgba(22,45,36,.76) !important; }
+html:not(.gp-home-runtime-ready) .gp-story .is-invisible--js { opacity: 1 !important; visibility: visible !important; }
+.gp-story .l-gallery__title { width: 75%; }
+.gp-story .gp-hero-title { font-family: var(--font-display); font-weight: 100; font-size: var(--gp-heading-size); line-height: 1.08; }
+.gp-story .l-gallery__caption .text-t1 { max-width: 440px; font-size: clamp(16px,1.45vw,20px); line-height: 1.3; }
+.gp-project-link { display: inline-flex; gap: 24px; color: #F4EEDF; border-bottom: 1px solid currentColor; padding: 18px 0 8px; font: 14px/1.2 var(--font-body),Arial,sans-serif; text-decoration: none; margin-top: 25px; }
+.gp-story .gp-process-copy { font-size: clamp(15px,1.35vw,19px); line-height: 1.4; }
+.gp-story .gp-process-details { margin-top: 32px; max-width: 440px; }
+.gp-story .gp-process-details h3 { font: 400 clamp(16px,1.4vw,20px)/1.25 var(--font-body),Arial,sans-serif; margin: 22px 0 8px; }
+.gp-story .gp-process-details p { font: 400 clamp(14px,1.15vw,16px)/1.45 var(--font-body),Arial,sans-serif; }
+.gp-story .gp-harmony-title { font-size: var(--gp-heading-size); line-height: 1.02; }
+.gp-story .gp-quality-title { font-size: var(--gp-heading-size); line-height: 1.02; }
+.gp-story .gp-pricing-title { font-size: var(--gp-heading-size); line-height: 1.05; }
+.gp-story .gp-water-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; mix-blend-mode: screen; opacity: .14; pointer-events: none; }
+.gp-home-webgl .gp-story .gp-water-video { opacity: 0; }
+.gp-story .gp-harmony-person { position: absolute; bottom: 0; left: 4vw; height: 103%; width: 73%; object-fit: contain; object-position: bottom left; transform: scaleX(-1); pointer-events: none; }
+html.gp-home-no-webgl .gp-story [data-gp-fallback] { position: absolute; inset: 0; background-size: cover; background-position: center; }
+html.gp-home-no-webgl .gp-story [data-gp-fallback="webglWellness"] { background-image: url('/Forest.webp'); }
+html.gp-home-no-webgl .gp-story [data-gp-fallback="webglNature"] { background-image: url('/pool-dark-bg.webp'); }
+html.gp-home-no-webgl .gp-story canvas, html.gp-home-no-webgl .gp-story .l-wellness__webgl-circle { display: none; }
+.gp-native-expert-app { position: relative; z-index: 10; }
+.gp-native-expert-app > .luxury-stage + .luxury-stage { margin-top: 0 !important; }
+.gp-native-expert-app .gp-expert-panel .luxury-stage-surface > section { height: 100svh; min-height: 700px; }
+.gp-native-expert-app .gp-expert-panel .luxury-stage-view,
+.gp-native-expert-app .gp-expert-panel .luxury-stage-surface,
+.gp-native-expert-app .gp-expert-panel .luxury-stage-reveal { min-height: max(100svh,700px); }
+.gp-native-expert-app .gp-app-panel .luxury-stage-surface > section { min-height: 100svh; }
+.gp-story .l-residences { margin-top: 0 !important; clip-path: none; z-index: 12; }
+.gp-story .l-residences__webgl-container, .gp-story .l-residences__slider-container { z-index: 12; }
+.gp-story .l-residences__caption__type { text-transform: none; font-family: var(--font-display); font-size: 30px; line-height: 1.15; }
+.gp-story .l-residences__caption__description { font-size: 14px; line-height: 1.25; }
+.gp-story .l-residences__caption__item { padding-top: 12px; }
+.gp-story .gp-project-description, .gp-story .gp-mobile-project-description { font-family: var(--font-body),Arial,sans-serif; font-size: 15px; line-height: 1.45; }
+.gp-story .gp-mobile-project-description { margin: 16px 0 24px; }
+.gp-story .l-residences__caption:focus-within .l-residences__caption__card { height: calc(var(--scale-px) * 460); }
+.gp-story .l-residences__caption:focus-within .l-residences__caption__line { transform: translateY(-220px); }
+.gp-story .l-interiors { z-index: 13; }
+.gp-native-ending { position: relative; z-index: 14; }
+html.gp-home-smooth .gp-native-ending .luxury-stage[data-hold="sticky"] > .luxury-stage-view { position: relative !important; top: 0 !important; }
+.gp-native-ending #contact-form { scroll-margin-top: 0; }
+.gp-story .gp-pricing-controls { margin: 24px 0 0; font: 400 16px/1.4 var(--font-body),Arial,sans-serif; color: #162D24; }
+.gp-story .gp-price-bands { display: flex; flex-direction: column; gap: 0; }
+.gp-story .gp-price-bands button { display: flex; justify-content: space-between; gap: 16px; width: 100%; padding: 11px 0; min-height: 44px; border: 0; border-bottom: 1px solid rgba(22,45,36,.2); background: transparent; color: inherit; font: 400 17px/1.3 var(--font-body),Arial,sans-serif; text-transform: none; cursor: pointer; opacity: .55; }
+.gp-story .gp-price-bands button[aria-pressed="true"] { opacity: 1; }
+.gp-story .gp-price-bands button:focus-visible { outline: 2px solid #094146; outline-offset: 4px; }
+.gp-story .gp-price-detail { margin-top: 18px; min-height: 100px; }
+.gp-story .gp-price-detail p { font: 400 15px/1.4 var(--font-body),Arial,sans-serif; margin: 0 0 8px; }
+.gp-story .gp-price-plan { width: 100%; height: 145px; color: #094146; }
+.gp-story .gp-price-plan text { font: 12px var(--font-body),Arial,sans-serif; }
+.gp-story .gp-pricing-static { font: 16px/1.5 var(--font-body),Arial,sans-serif; }
+.gp-story .gp-pricing-static p { margin: 20px 0; }
+.has-pricing-controls .gp-pricing-static { display: none; }
+.gp-motion-error { position: fixed; bottom: 16px; left: 16px; z-index: 10000; padding: 12px 18px; background: #F4EEDF; color: #162D24; font: 14px var(--font-body),Arial,sans-serif; }
+@media (min-width: 1025px) {
+
+  .gp-story .l-intro__content-title { padding-top: 24px; padding-bottom: 24px; }
+  .gp-story .l-interiors .col--md-6 > .px-layout:has([data-gp-pricing-slot]) { padding-top: 90px; padding-bottom: 36px; }
+}
+@media (max-width: 1024px) {
+  .gp-story .l-gallery__title { width: 100%; padding-left: 20px; }
+  .gp-story .gp-hero-title { font-size: var(--gp-heading-size); }
+  .gp-story .gp-harmony-title { font-size: var(--gp-heading-size); }
+  .gp-story .gp-quality-title { font-size: var(--gp-heading-size); }
+  .gp-story .gp-pricing-title { font-size: var(--gp-heading-size); }
+  .gp-native-expert-app .gp-app-panel .luxury-stage-surface > section { padding: 100px 0 70px; }
+  .gp-native-expert-app .gp-expert-panel .s7-mob-bg { transform: none; }
+  .gp-native-expert-app .gp-expert-panel .luxury-stage-surface > section { min-height: 780px; }
+  .gp-native-expert-app .gp-expert-panel .luxury-stage-view,
+  .gp-native-expert-app .gp-expert-panel .luxury-stage-surface,
+  .gp-native-expert-app .gp-expert-panel .luxury-stage-reveal { min-height: max(100svh,780px); }
+  .gp-story .gp-pricing-controls { color: #162D24; }
+  .gp-story .l-interiors__slider .gp-pricing-controls { margin-top: 20px; }
+}
+@media (max-width: 767px) {
+  .gp-story .l-gallery__caption .text-t1 { max-width: 300px; font-size: 15px; line-height: 1.4; }
+  .gp-story .gp-hero-title { font-size: var(--gp-heading-size); }
+  .gp-project-link { margin-top: 16px; padding-top: 8px; }
+  .gp-story .gp-process-details { margin-top: 24px; }
+}
+
+/* GP photographs are landscape; preserve the reference collage's portrait
+   windows instead of letting their intrinsic image ratios collapse each row. */
+.gp-story .l-gallery__item picture { aspect-ratio: 3 / 4; width: 100%; overflow: hidden; }
+.gp-story .l-gallery__item picture img { width: 100%; height: 100%; object-fit: cover; }
+html.gp-home-active .c-scrollbar { position: fixed; z-index: 1500; }
+html.gp-home-active .c-scrollbar_thumb { background: rgba(244,238,223,.65); box-shadow: 0 0 0 1px rgba(22,45,36,.24); }
+
+/* Match the existing Grandpools heading scale; keep the reference scene geometry. */
+.gp-story { --gp-heading-size: 72px; }
+.gp-story :is(h1,h2,.h1,.h2,.g1,.g2) { font-size: var(--gp-heading-size); line-height: 1.15; font-weight: 100; }
+@media(max-width:1024px) { .gp-story { --gp-heading-size:56px; } .gp-story :is(h1,h2,.h1,.h2,.g1,.g2) {line-height:1.3;} }
+@media(max-width:767px) { .gp-story { --gp-heading-size:42px; } }
+/* A usable photographic layer remains underneath the GPU renderer. */
+.gp-story [data-parallax-pattern="webglWellness"] { position:absolute; inset:0; background:url('/Forest.webp') center/cover; }
+.gp-story [data-parallax-pattern="webglNature"] { position:absolute; inset:0; background:url('/pool-dark-bg.webp') center/cover; }
+.gp-story .l-wellness__webgl-inner > .background { pointer-events:none; }
+
+.gp-story .l-wellness__webgl-title .text-c1 { margin-bottom:16px; }
+
+/* The removed location artwork used to provide this scroll runway. Keep the
+   Nature mask's 520vh timeline before handing off to the GP expert section. */
+@media(min-width:1025px) { .gp-story #nature { height:650vh; } }
+
+/* GP content and controls: no reference button chrome. */
+.gp-story .gp-original-button { border:0; border-radius:0; background:none; padding:0 0 4px; margin:0; text-decoration:none; }
+.gp-story .button-roll-char { font:inherit; }
+.gp-story .gp-process-workspace { width:30%; max-width:30%; padding-top:12vh; padding-bottom:64px; left:64px; }
+.gp-story .gp-process-workspace h3 { font-family:var(--font-body),Arial,sans-serif; font-weight:600; font-size:18px; line-height:1.4; }
+.gp-story .gp-process-workspace p { font-family:var(--font-body),Arial,sans-serif; line-height:1.625; font-size:14px; }
+.gp-story .gp-process-workspace > p { font-size:16px; }
+.gp-story #about .l-intro__image--first:after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(8,22,18,.65),rgba(8,22,18,.15)); pointer-events:none; }
+.gp-story .gp-wave-slot { position:absolute; inset:0; width:100%; height:100%; }
+.gp-story .gp-wave-slot > .gp-harmony-person { z-index:3; }
+.gp-story .gp-wave-slot > div { position:absolute; inset:0; }
+@media(min-width:1025px) { .gp-story #wellness { height:350vh; } }
+/* The project card grows only as far as its description, plus the GP button. */
+.gp-story .l-residences__caption__line { display:none; }
+.gp-story .l-residences__caption__card { height:auto !important; max-height:calc(100svh - 120px); overflow:auto; }
+.gp-story .l-residences__caption__card-content { position:relative; width:100%; padding:24px 30px 16px; height:auto; }
+.gp-story .l-residences__caption__description { min-height:0; margin:12px 0 0; }
+.gp-story .l-residences__caption__item { height:auto; display:grid; grid-template-rows:0fr; padding:0; transition:grid-template-rows .55s ease,margin .55s ease; }
+.gp-story .l-residences__caption__item > p { min-height:0; overflow:hidden; margin:0; opacity:0; transition:opacity .35s ease; }
+.gp-story .l-residences__caption:is(:hover,:focus-within) .l-residences__caption__item { grid-template-rows:1fr; margin-top:20px; }
+.gp-story .l-residences__caption:is(:hover,:focus-within) .gp-project-description { opacity:1; }
+.gp-story .l-residences__caption__button { position:relative; bottom:auto; padding:0 30px 24px; border:0; }
+/* Title, then budget introduction, then the two-column pool configurator. */
+.gp-story .gp-pricing-shade { position:absolute; inset:0; background:rgba(8,22,18,.42); }
+.gp-story .gp-pricing-intro-copy { position:absolute; bottom:8vh; left:0; width:40%; color:#F4EEDF; }
+.gp-story .gp-pricing-intro-copy p { font:16px/1.5 var(--font-body),Arial,sans-serif; }
+.gp-story .gp-cost-stage { position:absolute; inset:0; height:100svh; background:#F4EEDF; }
+.gp-story .gp-pricing-mount { width:100%; height:100%; }
+.gp-story .gp-pricing-controls { margin:0; width:100%; min-height:100%; display:grid; grid-template-columns:1fr 1fr; color:#162D24; }
+.gp-story .gp-price-sketch { background:#dce5df; padding:100px 40px 48px; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.gp-story .gp-sketch-label { font:100 42px/1.15 var(--font-display); }
+.gp-story .gp-price-plan { width:100%; max-width:650px; height:auto; color:#094146; }
+.gp-story .gp-price-plan text { font:14px var(--font-body),Arial,sans-serif; }
+.gp-story .gp-price-selection { padding:110px 6vw 50px; display:flex; flex-direction:column; justify-content:center; gap:32px; }
+.gp-story .gp-price-bands { display:flex; flex-direction:row; flex-wrap:wrap; gap:18px; }
+.gp-story .gp-price-bands button { display:inline-block; width:fit-content; min-height:0; padding:0 0 4px; opacity:.5; border:0; }
+.gp-story .gp-price-bands .btn-underline { color:#162D24 !important; }
+.gp-story .gp-price-bands .btn-underline:after { background:#162D24 !important; }
+.gp-story .gp-price-bands button[aria-pressed=true] { opacity:1; }
+.gp-story .gp-price-detail { margin:0; min-height:100px; }
+.gp-story .gp-price-detail h3 { font:100 38px/1.2 var(--font-display); margin:0 0 16px; }
+.gp-story .gp-price-detail p,.gp-story .gp-cost-factors p { font:16px/1.5 var(--font-body),Arial,sans-serif; }
+.gp-story .gp-cost-factors h3 { font:600 18px/1.4 var(--font-body),Arial,sans-serif; margin-bottom:16px; }
+/* GP's original split panels share the same scroller; no competing pin owner. */
+.gp-invitation { position:relative; height:335vh; margin-top:0; z-index:15; pointer-events:none; }
+.gp-invitation-view { position:sticky; top:0; height:100svh; overflow:hidden; }
+html.gp-home-smooth .gp-invitation-view { position:relative; }
+.gp-invitation .s9-section { pointer-events:none; background:transparent; }
+@media(max-width:1024px) {
+ .gp-story .gp-cost-mobile { padding:100px 24px 0; }
+ .gp-story .gp-cost-mobile > p { margin:24px 0; }
+ .gp-story .gp-pricing-controls { display:flex; flex-direction:column; margin:0 -24px; width:calc(100% + 48px); }
+ .gp-story .gp-price-sketch { padding:48px 24px 24px; }
+ .gp-story .gp-price-selection { padding:48px 24px; }
+ .gp-invitation { height:100lvh; margin-top:0; }
+ .gp-invitation-view { height:100lvh; }
+}
+.gp-story .l-residences__caption,
+.gp-story .l-residences__caption .content-animation > [data-content-animation-item] { background:transparent; }
+.gp-story .l-residences__caption__card { background:#162D24; }
+.gp-story .gp-process-workspace > div:nth-last-child(-n+2) h3 { font-size:16px; }
+
+/* Typography and copy placement for the GP scene content. */
+.gp-story .gp-eyebrow { font:400 16px/1.4 var(--font-body),Arial,sans-serif; text-transform:none !important; letter-spacing:.015em; margin:0 0 14px; }
+.gp-story .gp-process-opening { display:block; padding:0; position:absolute; top:17vh; left:4vw; width:55%; }
+.gp-story .gp-process-opening .gp-section-heading h2 { margin:0; text-align:left; }
+.gp-story .gp-process-bottom-copy { position:absolute; right:4vw; bottom:9vh; width:330px; max-width:38%; font:16px/1.5 var(--font-body),Arial,sans-serif; z-index:5; color:#F4EEDF; }
+.gp-story .gp-process-workspace h3 { margin:0 0 8px !important; }
+.gp-story .gp-process-workspace h3 + p { margin:0 !important; }
+.gp-story .gp-process-workspace > div { line-height:1.5; }
+.gp-story .gp-harmony-caption { padding:0; }
+.gp-story .gp-harmony-copy { position:absolute; left:50%; right:4vw; top:50%; transform:translateY(-50%); text-align:left; }
+.gp-story .gp-harmony-copy .gp-harmony-title { font-size:clamp(44px,4vw,72px); line-height:1.15; white-space:nowrap; margin:0 0 18px; }
+.gp-story .gp-harmony-paragraph { font:16px/1.6 var(--font-body),Arial,sans-serif; max-width:330px; margin:0; text-shadow:0 1px 8px #0008; }
+.gp-story .l-nature-bg-caption > .gp-eyebrow { margin:0 0 14px; }
+.gp-story .l-nature-bg-caption .gp-quality-title { margin:0; }
+.gp-story .l-nature-bg-caption .mt-1:empty { display:none; }
+.gp-story .gp-quality-prose { width:100%; height:auto !important; min-height:0; max-width:500px; margin:0 !important; padding:0; }
+.gp-story .gp-quality-prose p { font:400 16px/1.65 var(--font-body),Arial,sans-serif; margin:0 0 24px; }
+.gp-story .gp-quality-prose p:last-child { margin-bottom:0; }
+.gp-story .l-nature__caption__inner > [data-parallax-pattern="natureCaptionMoveUp"] { padding-top:72px; padding-bottom:72px; min-height:390px; }
+.gp-story .gp-quality-secondary-bg:after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,rgba(4,16,12,.15),rgba(4,16,12,.65)); pointer-events:none; }
+.gp-story .l-nature__slider-caption { padding:28px; margin-left:10%; max-width:420px; background:rgba(12,32,25,.82); backdrop-filter:blur(12px); }
+.gp-story .l-nature__slider-caption p { font:16px/1.5 var(--font-body),Arial,sans-serif; }
+.gp-story [data-parallax-pattern="webglNature"], html.gp-home-no-webgl .gp-story [data-gp-fallback="webglNature"] { background-image:url('/secninebg.webp'); }
+.gp-story .gp-projects-intro-copy { position:absolute; inset:0; padding:0 4vw; display:flex; flex-direction:column; justify-content:center; background:linear-gradient(90deg,rgba(8,26,20,.82),rgba(8,26,20,.15)); }
+.gp-story .gp-projects-intro-copy h2 { margin:0 0 24px; }
+.gp-story .gp-projects-intro-description { max-width:420px; font:16px/1.6 var(--font-body),Arial,sans-serif; margin:0; }
+/* Fixed card sizes reserve room for any title's two lines. */
+.gp-story .l-residences__caption,
+.gp-story .l-residences__caption .content-animation,
+.gp-story .l-residences__caption .content-animation > [data-content-animation-item],
+.gp-story .l-residences__caption > .l-residences__caption__content-animation { height:280px !important; }
+.gp-story .l-residences__caption { width:340px; }
+.gp-story .l-residences__caption__card { width:340px; height:280px !important; overflow:hidden; transition:height .65s cubic-bezier(.25,.74,.22,.99); }
+.gp-story .l-residences__caption:is(:hover,:focus-within) .l-residences__caption__card { height:420px !important; }
+.gp-story .l-residences__caption__card-content { width:100%; padding:26px 30px 0; }
+.gp-story .l-residences__caption__type { min-height:70px; max-height:70px; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden; font-size:30px; line-height:1.15; white-space:normal; overflow-wrap:normal; }
+.gp-story .l-residences__caption__description { margin:8px 0 20px; line-height:1.4; }
+.gp-story .gp-card-progress { height:1px; width:100%; background:rgba(244,238,223,.22); position:relative; overflow:hidden; }
+.gp-story .gp-card-progress span { display:block; width:0; height:100%; background:#F4EEDF; }
+.gp-story .l-residences__caption__item { display:block; margin-top:20px; height:138px; padding:0; }
+.gp-story .gp-project-description { opacity:0; max-height:138px; overflow:auto !important; font-size:15px; line-height:1.5; }
+.gp-story .l-residences__caption:is(:hover,:focus-within) .gp-project-description { opacity:1; }
+.gp-story .l-residences__caption__button { position:absolute; bottom:0; padding:20px 30px 26px; background:#162D24; }
+/* Rich architectural study: GP photography, a fine drawing grid and warm paper. */
+.gp-story .gp-price-sketch { position:relative; color:#F4EEDF; background:linear-gradient(rgba(9,31,26,.88),rgba(9,31,26,.94)),url('/camberwell3.webp') center/cover; padding:92px 38px 36px; overflow:hidden; }
+.gp-story .gp-price-sketch:before { content:''; position:absolute; inset:0; opacity:.14; pointer-events:none; background-image:linear-gradient(#d4dfd7 1px,transparent 1px),linear-gradient(90deg,#d4dfd7 1px,transparent 1px); background-size:40px 40px; }
+.gp-story .gp-plan-topline { position:absolute; top:100px; left:38px; right:38px; display:flex; justify-content:space-between; gap:20px; font:11px/1.4 var(--font-body),Arial,sans-serif; letter-spacing:.08em; text-transform:uppercase; opacity:.7; }
+.gp-story .gp-sketch-label { position:relative; font-size:48px; margin-top:40px; }
+.gp-story .gp-plan-subtitle { font:12px/1.5 var(--font-body),Arial,sans-serif; opacity:.65; margin-top:12px; }
+.gp-story .gp-price-plan { position:relative; color:#dbe8dc; max-height:52vh; }
+.gp-story .gp-price-plan > rect,.gp-story .gp-price-plan > path { stroke-dasharray:1400; animation:gp-plan-draw .9s ease both; }
+.gp-story .gp-plan-spec { width:100%; position:relative; border-top:1px solid #f4eedf40; padding-top:20px; display:flex; align-items:center; justify-content:space-between; gap:16px; font:12px/1.5 var(--font-body),Arial,sans-serif; }
+.gp-story .gp-plan-spec p { font:12px/1.5 var(--font-body),Arial,sans-serif; max-width:160px; }
+.gp-story .gp-price-selection { background:#F4EEDF; padding:110px 5vw 48px; gap:26px; }
+.gp-story .gp-price-selection .gp-budget-label { margin:0 0 14px; color:#31594f; }
+.gp-story .gp-price-bands { gap:26px; padding-bottom:20px; border-bottom:1px solid #162d2430; }
+.gp-story .gp-budget-caption { display:block; font:12px/1.5 var(--font-body),Arial,sans-serif; margin:0 0 10px; color:#31594f; }
+.gp-story .gp-price-detail h3 { font-size:52px; }
+.gp-story .gp-cost-factors { padding-top:22px; border-top:1px solid #162d2430; }
+.gp-story .gp-cost-factors p { columns:2; column-gap:28px; font-size:14px; line-height:1.8; }
+@keyframes gp-plan-draw { from {stroke-dashoffset:1400;opacity:.3;} to {stroke-dashoffset:0;opacity:1;} }
+/* Transparent independent panels; the exact pricing state stays behind them. */
+.gp-native-ending { background:transparent !important; }
+.gp-invitation,.gp-invitation-view,.gp-invitation .s9-section { background:transparent !important; }
+.gp-invitation-underlay { position:absolute; inset:0; width:100%; height:100%; visibility:hidden; z-index:0; pointer-events:none; }
+.gp-invitation .s9-section { position:relative; z-index:1; }
+.gp-invitation .s9-native-title-wrapper-1,.gp-invitation .s9-native-title-wrapper-2 { top:50%; }
+.gp-closing-panel { position:relative; z-index:20; margin-top:-100vh; background:#162D24; }
+/* Auren-style fine horizontal track, with keyboard/drag seeking. */
+.gp-page-progress { position:fixed; z-index:1800; bottom:6px; left:16px; right:16px; height:20px; color:#f4eedf; mix-blend-mode:difference; }
+.gp-page-progress input { appearance:none; display:block; width:100%; height:1px; margin:10px 0 0; border:0; box-shadow:0 0 0 1px rgba(244,238,223,.25); cursor:ew-resize; color:inherit; }
+.gp-page-progress input::-webkit-slider-thumb { appearance:none; width:4px; height:8px; border-radius:0; background:currentColor; }
+.gp-page-progress input::-moz-range-thumb { width:4px; height:8px; border:0; border-radius:0; background:currentColor; }
+@media(max-width:1024px) {
+ .gp-story .gp-eyebrow { font-size:14px; }
+ .gp-story .gp-harmony-copy { left:24px; right:24px; top:20%; }
+ .gp-story .gp-harmony-copy .gp-harmony-title { font-size:var(--gp-heading-size); white-space:normal; }
+ .gp-story .gp-price-sketch { padding:100px 24px 32px; }
+ .gp-story .gp-plan-topline { top:40px; left:24px; right:24px; }
+ .gp-story .gp-sketch-label { margin-top:0; font-size:42px; }
+ .gp-story .gp-price-selection { padding:48px 24px; }
+ .gp-story .gp-price-detail h3 { font-size:42px; }
+ .gp-story .gp-cost-factors p { columns:1; }
+ .gp-invitation-underlay { display:none; }
+ .gp-closing-panel { margin-top:0; }
+}
+@media(prefers-reduced-motion:reduce) { .gp-story .gp-price-plan > rect,.gp-story .gp-price-plan > path {animation:none;} }
+.gp-story h1,.gp-story h2 { font-family:var(--font-display),Georgia,serif; }
+.gp-story .l-nature__caption__inner > [data-parallax-pattern="natureCaptionMoveUp"] { height:auto !important; min-height:0; padding-top:40px; padding-bottom:40px; align-self:flex-start; }
+
+/* Give every reading phase its own space before the next mask arrives. */
+@media(min-width:1025px) { .gp-story #about {height:700vh;} }
+.gp-story .gp-static-hero-copy,.gp-story .gp-static-hero-copy :is(h1,p,a) {opacity:1!important;visibility:visible!important;transform:none!important;animation:none!important;}
+.gp-story .l-nature__caption__inner > [data-parallax-pattern="natureCaptionMoveUp"] {min-height:410px;height:auto!important;padding-top:86px;padding-bottom:56px;}
+.gp-story .gp-quality-prose {max-width:640px;}
+.gp-story .gp-quality-prose p {font-size:20px;line-height:1.6;}
+@media(max-width:1200px) {.gp-story .gp-quality-prose p {font-size:18px;}}
+/* Card size follows real copy; there is no nested scroll area. */
+.gp-story .l-residences__caption__card,.gp-story .l-residences__caption:is(:hover,:focus-within) .l-residences__caption__card {height:auto!important;max-height:none;overflow:visible;}
+.gp-story .l-residences__caption__type {display:block;min-height:75px;max-height:none;overflow:visible;-webkit-line-clamp:unset;padding-top:5px;line-height:1.25;}
+.gp-story .l-residences__caption__type:before,.gp-story .l-residences__caption__type:after {display:none;}
+.gp-story .l-residences__caption__item {display:grid;height:auto;grid-template-rows:0fr;margin:0;overflow:hidden;transition:grid-template-rows .6s ease,margin .6s ease;}
+.gp-story .l-residences__caption:is(:hover,:focus-within) .l-residences__caption__item {grid-template-rows:1fr;margin-top:20px;}
+.gp-story .gp-project-description {min-height:0;max-height:none;overflow:hidden!important;margin:0;padding:0;}
+.gp-story .l-residences__caption__button {position:relative;bottom:auto;padding:24px 30px 26px;}
+.gp-story .l-interiors__intro-caption .text-c1 {text-transform:none;margin-top:14px;}
+.gp-page-progress {height:1px;bottom:16px;pointer-events:none!important;background:#f4eedf40;}
+.gp-page-progress > span {display:block;width:100%;height:100%;background:currentColor;transform-origin:left;}
+
+.gp-story .l-interiors__intro-caption .text-c1 {font:400 16px/1.4 var(--font-body),Arial,sans-serif;letter-spacing:.015em;}
