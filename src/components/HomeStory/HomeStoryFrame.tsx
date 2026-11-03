@@ -13,6 +13,7 @@ import Stage from '@/src/components/motion/LuxuryStage';
 import PricingControls from './PricingControls';
 import PageProgress from './PageProgress';
 import {installHomeEntrances} from './entrances';
+import { installProjectNavigation } from './project-navigation';
 import { startHomeMotion } from './runtime';
 
 export default function HomeStoryFrame({ opening, collection }: { opening: ReactNode; collection: ReactNode }) {
@@ -47,6 +48,13 @@ export default function HomeStoryFrame({ opening, collection }: { opening: React
     if(!ready||!root.current||matchMedia("(max-width:1024px)").matches)return;
     return installHomeEntrances(root.current);
   },[ready]);
+
+  useEffect(() => {
+    if (!ready || !root.current) return;
+    const cleanup = installProjectNavigation(root.current);
+    const frame = requestAnimationFrame(() => smootherRef?.current?.resize());
+    return () => { cancelAnimationFrame(frame); cleanup(); };
+  }, [ready, smootherRef]);
 
   useEffect(() => {
     if (!ready || process.env.NODE_ENV !== 'development' || !root.current) return;

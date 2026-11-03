@@ -22,6 +22,7 @@ export function getHomeStoryMarkup() {
     .replace('{{project-cards}}', projects.map(project => fill(read('project-card'), project)).join('\n'))
     .replace('{{project-mobile-images}}', projects.map(project => fill(read('project-mobile-image'), project)).join('\n'))
     .replace('{{project-mobile-cards}}', projects.map(project => fill(read('project-mobile-card'), project)).join('\n'))
+    .replace('{{project-mobile-thumbs}}', projects.map(project => `<a class="gp-project-thumb js-mobile-scrollable-thumbnail${project.number === 1 ? ' is-active' : ''}" role="button" tabindex="0" aria-label="View ${escape(project.title)}">${escape(project.title)}</a>`).join('\n'))
     .replaceAll('{{project-count}}', String(projects.length))
     .replaceAll('{{projects-height}}', String((projects.length + 3) * 100));
   return {

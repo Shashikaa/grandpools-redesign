@@ -101,6 +101,10 @@ export function startHomeMotion(root: HTMLElement): Promise<HomeScroller> {
       resize() {
         if (smooth) engine.scroller?.update();
         engine.update();
+        // The native reference engine has no scroller.update(). Its parallax
+        // measurement queue listens to resize, including after React portals
+        // add the full pricing study or the app mockup changes the page height.
+        if (!smooth) window.dispatchEvent(new Event('resize'));
       },
     };
     window.__gpHomeScroller = adapter;

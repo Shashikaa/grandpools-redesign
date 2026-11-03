@@ -22,6 +22,7 @@ export function installHomeEntrances(root:HTMLElement) {
     if(scene.id==='wellness')beat=.75;
     if(scene.id==='nature')beat=el.closest('.l-nature__caption')?2.05:el.closest('.l-nature__slider')?3.75:.75;
     if(scene.id==='interiors')beat=.6;
+    if(scene.id==='l-residences-sticky-1')beat=-.8;
     return start+innerHeight*beat;
   };
   const update=()=>{
@@ -29,9 +30,10 @@ export function installHomeEntrances(root:HTMLElement) {
     records.forEach(r=>{
       if(r.shown||y<at(r.el))return;
       const box=r.el.getBoundingClientRect();
-      if(box.top>innerHeight*.92||box.bottom<80)return;
+      if(box.top>innerHeight*.98||box.bottom<80)return;
       r.shown=true;
-      r.tween=gsap.to(r.targets,{yPercent:0,opacity:1,duration:r.title?1.15:1.05,stagger:r.title?{amount:.30}:.07,ease:'power3.out',overwrite:'auto'});
+      const projectIntro=!!r.el.closest('.gp-projects-intro-copy');
+      r.tween=gsap.to(r.targets,{yPercent:0,opacity:1,duration:projectIntro ? 0.8 : r.title ? 1.15 : 1.05,stagger:r.title?{amount:projectIntro ? 0.18 : 0.30}:.07,ease:'power3.out',overwrite:'auto'});
     });
   };
   update();window.addEventListener('grandpools:scroll',update);

@@ -266,7 +266,7 @@ html.gp-home-smooth .gp-invitation-view { position:relative; }
 /* Give every reading phase its own space before the next mask arrives. */
 @media(min-width:1025px) { .gp-story #about {height:700vh;} }
 .gp-story .gp-static-hero-copy,.gp-story .gp-static-hero-copy :is(h1,p,a) {opacity:1!important;visibility:visible!important;transform:none!important;animation:none!important;}
-.gp-story .l-nature__caption__inner > [data-parallax-pattern="natureCaptionMoveUp"] {min-height:400px;height:auto!important;padding-top:76px;padding-bottom:56px;}
+.gp-story .l-nature__caption__inner > [data-parallax-pattern="natureCaptionMoveUp"] {min-height:580px;height:auto!important;padding-top:56px;padding-bottom:56px;}
 .gp-story .gp-quality-prose {max-width:640px;}
 .gp-story .gp-quality-prose p {font-size:20px;line-height:1.6;}
 @media(max-width:1200px) {.gp-story .gp-quality-prose p {font-size:18px;}}
@@ -301,4 +301,119 @@ html.gp-home-smooth .gp-invitation-view { position:relative; }
 @media(max-width:1024px) {
  .gp-story #interiors-2 .l-interiors__intro-caption h2 {margin:0;line-height:1.15;}
  .gp-story #interiors-2 .l-interiors__intro-caption > .text-c1 {font:400 14px/1.4 var(--font-body),Arial,sans-serif;margin:14px 0 0;text-transform:none;}
+}
+
+/* Quality uses the same full-resolution pool photograph on every viewport. */
+.gp-story [data-parallax-pattern="webglNature"],
+html.gp-home-no-webgl .gp-story [data-gp-fallback="webglNature"] {
+  background-image: url('/camberwell3.webp');
+}
+.gp-story .gp-price-selection h3 { color: #162d24; }
+
+/* Mobile repairs retain the reference sticky zooms, masks and swipe controllers. */
+@media (max-width: 1024px) {
+  /* The imported selector expects the preloader class inside the scene. The
+     GP preloader owns that class on html, so expose this layer explicitly. */
+  .gp-story .l-gallery__gradient {
+    opacity: 1;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgb(12 35 29 / .3), transparent 38%, rgb(9 34 29 / .6));
+  }
+  .gp-story .l-gallery__caption { z-index: 2; }
+  .gp-story .gp-eyebrow,
+  .gp-story .l-intro__opening-subtitle,
+  .gp-story .l-wellness__webgl-title .text-c1,
+  .gp-story .l-residences__webgl-caption .text-c1,
+  .gp-story .carousel__thumb .text-c1,
+  .gp-story #interiors-2 .text-c1 { text-transform: none !important; letter-spacing: .015em; }
+  .gp-story .gp-mobile-heading,
+  .gp-story #about-mobile .l-intro__opening,
+  .gp-story #wellness-mobile .l-wellness__webgl-title,
+  .gp-story #l-residences-sticky-2 .l-residences__webgl-caption > .col { display: flex; flex-direction: column; gap: 12px; }
+  .gp-story .gp-mobile-heading > *,
+  .gp-story #about-mobile .l-intro__opening .leading-trim,
+  .gp-story #wellness-mobile .l-wellness__webgl-title > *,
+  .gp-story #l-residences-sticky-2 .l-residences__webgl-caption > .col > * { margin-top: 0; margin-bottom: 0; }
+  .gp-story #about-mobile .l-intro__opening { padding-top: 110px; width: 100%; }
+  .gp-story #about-mobile .l-intro__opening > .col { width: 100%; flex: 0 0 auto; }
+  .gp-story #about-mobile .l-intro__opening-subtitle { width: 100%; max-width: 300px; }
+  .gp-story #nature-mobile .gp-mobile-heading { text-align: right; width: 100%; }
+  .gp-story #nature-mobile .gp-mobile-heading .gp-eyebrow { margin: 0; }
+  .gp-story #l-residences-sticky-2 .l-residences__webgl-caption .col--xs-2 { width: 100%; }
+
+  /* No desktop heading or repeated service list in the mobile founder story. */
+  .gp-story .gp-process-mobile-content { padding-top: 64px; padding-bottom: 64px; }
+  .gp-story .gp-process-mobile-content .l-intro__content-text { width: 100%; margin: 0; }
+  .gp-story .gp-process-mobile-content .gp-process-copy { margin: 0; font-size: 16px; line-height: 1.55; }
+  .gp-story .gp-process-mobile-content .l-intro__content-image {
+    width: 72%; margin: 36px 0 36px auto; padding: 0 20px 0 0;
+  }
+  .gp-story .gp-process-mobile-content .l-intro__content-image picture { aspect-ratio: 4 / 3; }
+  .gp-story .gp-process-mobile-content .l-intro__content-image img { width: 100%; height: 100%; object-fit: cover; }
+  .gp-story .gp-process-mobile-content .gp-process-engineering { margin-bottom: 36px; }
+  .gp-story .gp-process-services { position: relative; z-index: 6; }
+  .gp-story #wellness-mobile { margin-top: 0 !important; --sticky-under-previous-distance: 0px; clip-path: none; }
+  .gp-story .gp-process-services .l-wellness__slider { min-height: 100svh; padding-top: 60px; padding-bottom: 48px; }
+  .gp-story .gp-process-services .carousel__thumb { gap: 10px; }
+  .gp-story .gp-process-services .carousel__thumb > * { width: calc((100% - 30px) / 4); flex: 0 0 calc((100% - 30px) / 4); font-size: 11px; line-height: 1.3; }
+  .gp-story .gp-process-services .l-wellness__slider__caption { height: auto; min-height: 280px; overflow: visible; }
+  .gp-story .gp-process-services .l-wellness__slider__caption-text { position: relative; inset: auto; padding: 40px 20px 0; max-width: none; }
+
+  /* Leave breathing room after the last image, including its pagination. */
+  .gp-story .gp-quality-gallery { padding-bottom: max(96px, 12svh); background: #162d24; }
+  .gp-story .gp-quality-gallery .carousel__thumb { bottom: 20px; }
+
+  /* The app panel measures all of its copy and mockup. The next intro no
+     longer borrows a viewport from this independently measured GP section. */
+  .gp-native-expert-app .gp-app-panel { height: auto !important; }
+  .gp-native-expert-app .gp-app-panel :is(.luxury-stage-view,.luxury-stage-reveal,.luxury-stage-surface) {
+    height: auto !important; min-height: 0; overflow: visible;
+  }
+  .gp-native-expert-app .gp-app-panel .luxury-stage-surface > section {
+    height: auto; min-height: 100svh; padding: 100px 0 72px; overflow: hidden;
+  }
+  .gp-native-expert-app .gp-app-panel .appsec-content { gap: 24px; }
+  .gp-native-expert-app .gp-app-panel .appsec-phone-wrapper img {
+    max-height: 38svh; width: min(180px, 45vw); height: auto; aspect-ratio: 292 / 598; max-width: 100%; margin: 16px auto !important;
+  }
+  .gp-native-expert-app .gp-app-panel .appsec-content > div:last-child > p { margin-bottom: 24px !important; }
+  .gp-story #l-residences-sticky-2 { margin-top: 0; --sticky-under-previous-distance: 0px; clip-path: none; }
+
+  /* Three project names stay in view, with the active name tracking swipes. */
+  .gp-story .gp-mobile-project-slider .l-residences__slider { padding-top: 64px; padding-bottom: 64px; }
+  .gp-story .gp-mobile-project-slider .l-residences__slider__images .mobile-scrollable { height: clamp(240px, 44svh, 420px); }
+  .gp-story .gp-mobile-project-slider .mobile-scrollable__item,
+  .gp-story .gp-mobile-project-slider .mobile-scrollable__item picture,
+  .gp-story .gp-mobile-project-slider .mobile-scrollable__item img { height: 100%; object-fit: cover; }
+  .gp-story .gp-project-thumbs { display: flex; width: 100%; gap: 0; padding: 16px 0 0; overflow-x: auto; scrollbar-width: none; }
+  .gp-story .gp-project-thumbs::-webkit-scrollbar { display: none; }
+  .gp-story .gp-project-thumb {
+    display: flex; flex-direction: column; justify-content: space-between; flex: 0 0 33.333333%; width: 33.333333%;
+    min-height: 62px; padding-right: 12px; font: 400 12px/1.35 var(--font-body),Arial,sans-serif;
+    color: #f4eedf; opacity: .5; cursor: pointer; white-space: normal;
+  }
+  .gp-story .gp-project-thumb:after { content: ''; display: block; height: 1px; background: currentColor; margin-top: 12px; }
+  .gp-story .gp-project-thumb.is-active { opacity: 1; }
+  .gp-story .gp-project-thumb:focus-visible { outline: 1px solid currentColor; outline-offset: -2px; }
+  .gp-story .gp-mobile-project-slider .l-residences__caption__item { padding-top: 28px; }
+  .gp-story .gp-mobile-project-slider .gp-mobile-project-description { font-size: 15px; }
+
+  /* The complete study slides above the held cost introduction; its height
+     follows content so every budget control remains before the invitation. */
+  .gp-story .gp-mobile-cost-story { position: relative; isolation: isolate; }
+  .gp-story #interiors-2 { height: 200svh; margin-top: 0; }
+  .gp-story #interiors-2 .l-interiors__intro-caption { padding-top: 100px; }
+  .gp-story #pool-cost-mobile { position: relative; margin-top: -100svh; padding: 0; z-index: 2; background: #162d24; }
+  .gp-story #pool-cost-mobile .gp-pricing-controls { margin: 0; width: 100%; min-height: 0; height: auto; overflow: visible; }
+  .gp-story #pool-cost-mobile .gp-price-sketch { padding: 100px 24px 32px; min-height: 460px; }
+  .gp-story #pool-cost-mobile .gp-price-plan { height: clamp(180px, 27svh, 280px); max-height: none; flex-shrink: 0; }
+  .gp-story #pool-cost-mobile .gp-price-selection { height: auto; min-height: 0; padding: 48px 24px 64px; }
+  .gp-story #pool-cost-mobile .gp-price-detail { min-height: 0; }
+
+  /* A full invitation viewport, followed by the CTA/footer sliding above it. */
+  .gp-native-ending .gp-invitation { height: 200svh; min-height: 200svh; }
+  .gp-native-ending .gp-invitation-view,
+  .gp-native-ending .gp-invitation .s9-section { height: 100svh; min-height: 100svh; }
+  .gp-native-ending .gp-closing-panel { margin-top: -100svh; position: relative; z-index: 20; }
 }

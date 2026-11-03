@@ -46,6 +46,8 @@ export default function Appsection() {
           <div className="w-[360px] md:w-[360px] lg:w-[85%] max-w-[380px]">
             <img 
               src="/app.png" 
+              width={292}
+              height={598}
               alt="Pool Care Mobile App Mockup" 
               className="w-full h-auto max-h-[55vh] md:max-h-[50vh] lg:!max-h-[60vh] block object-contain !mb-12 !mt-12" 
               loading="lazy" 
